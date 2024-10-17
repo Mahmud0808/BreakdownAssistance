@@ -136,6 +136,7 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="18dp"
                 android:text="Popular Services"
+                android:textColor="@color/black"
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
