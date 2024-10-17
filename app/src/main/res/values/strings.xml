@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">Breakdown Assistance</string>
+    <string name="home">Home</string>
+    <string name="services">Services</string>
+    <string name="location">Location</string>
+    <string name="profile">Profile</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="otp_description"><![CDATA[We will send you a <b>One Time Password</b> to this mobile number]]></string>

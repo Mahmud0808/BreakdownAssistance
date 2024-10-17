@@ -7,11 +7,9 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 
-import com.google.android.gms.maps.CameraUpdate;
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.MapsInitializer;
-import com.google.android.gms.maps.model.LatLng;
+import com.habibur.breakdown_assistance.R;
 import com.habibur.breakdown_assistance.databinding.FragmentLocationBinding;
+import com.habibur.breakdown_assistance.utils.ViewUtils;
 
 public class LocationFragment extends BaseFragment {
 
@@ -21,13 +19,15 @@ public class LocationFragment extends BaseFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentLocationBinding.inflate(inflater, container, false);
 
-        binding.mapView.onCreate(savedInstanceState);
+        ViewUtils.setToolbarTitle(requireContext(), binding.header.toolbar, R.string.location, true);
 
-        MapsInitializer.initialize(requireContext());
+        binding.mapView.onCreate(savedInstanceState);
 
 //        binding.mapView.getMapAsync(googleMap -> {
 //            googleMap.getUiSettings().setMyLocationButtonEnabled(false);
 //            googleMap.setMyLocationEnabled(true);
+//
+//            MapsInitializer.initialize(requireContext());
 //
 //            CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(43.1, -87.9), 10);
 //            googleMap.animateCamera(cameraUpdate);
