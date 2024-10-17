@@ -13,9 +13,117 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
+            android:id="@+id/linearLayoutContainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/img_mechanic" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="18dp"
+                android:letterSpacing="0.04"
+                android:lineHeight="26sp"
+                android:text="Hi there"
+                android:textColor="@color/black"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:letterSpacing="0.01"
+                android:text="You can choose a service below"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardViewBanner"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="24dp"
+                app:cardCornerRadius="16dp"
+                app:strokeWidth="0dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/img_home_banner" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/black_gradient_shade"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:lineHeight="24sp"
+                        android:text="Doorstep"
+                        android:textColor="@color/white"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:lineHeight="20sp"
+                        android:text="Bike &amp; Car Service"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:lineHeight="16sp"
+                        android:text="All your vehicle needs in one place"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center"
+                    android:background="@drawable/white_half_circle_bg">
+
+                    <ImageView
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_marginHorizontal="12dp"
+                        android:layout_marginTop="6dp"
+                        android:src="@drawable/ic_arrow_down"
+                        app:tint="@color/accent" />
+
+                </FrameLayout>
+            </com.google.android.material.card.MaterialCardView>
 
             <include
                 android:id="@+id/viewHomeDiscount"
@@ -43,6 +151,7 @@
                     android:paddingHorizontal="24dp">
 
                     <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardViewCarTowing"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:layout_marginEnd="16dp"
@@ -57,7 +166,10 @@
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="@drawable/black_gradient_shade" />
+                            android:background="@drawable/black_gradient_shade"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:foreground="?attr/selectableItemBackground" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -73,6 +185,7 @@
                     </com.google.android.material.card.MaterialCardView>
 
                     <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardViewFuelProblem"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:layout_marginEnd="16dp"
@@ -87,7 +200,10 @@
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="@drawable/black_gradient_shade" />
+                            android:background="@drawable/black_gradient_shade"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:foreground="?attr/selectableItemBackground" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -103,6 +219,7 @@
                     </com.google.android.material.card.MaterialCardView>
 
                     <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardViewFlatTire"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:layout_marginEnd="16dp"
@@ -117,7 +234,10 @@
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="@drawable/black_gradient_shade" />
+                            android:background="@drawable/black_gradient_shade"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:foreground="?attr/selectableItemBackground" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -133,9 +253,9 @@
                     </com.google.android.material.card.MaterialCardView>
 
                     <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardViewMoreServices"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
-                        android:layout_marginEnd="16dp"
                         app:strokeWidth="0dp">
 
                         <ImageView
@@ -147,7 +267,10 @@
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="@drawable/black_gradient_shade" />
+                            android:background="@drawable/black_gradient_shade"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:foreground="?attr/selectableItemBackground" />
 
                         <TextView
                             android:layout_width="wrap_content"

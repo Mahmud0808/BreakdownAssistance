@@ -19,11 +19,110 @@
             android:paddingHorizontal="24dp"
             android:paddingVertical="12dp">
 
-            <!-- TODO: Update blank fragment layout -->
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="Your Information"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:alpha="0.6"
+                android:text="Full Name"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/editTextFullName"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="@string/hello_blank_fragment" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/yellow_edittext_bg"
+                android:hint="E.g. John Doe"
+                android:inputType="textPersonName"
+                android:paddingHorizontal="18dp"
+                android:paddingVertical="12dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginTop="16dp"
+                android:alpha="0.6"
+                android:text="Phone Number"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/editTextPhoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/yellow_edittext_bg"
+                android:hint="+880 XXX XXX XXXX"
+                android:inputType="phone"
+                android:paddingHorizontal="18dp"
+                android:paddingVertical="12dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginTop="16dp"
+                android:alpha="0.6"
+                android:text="Vehicle Company"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/editTextVehicleCompany"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/yellow_edittext_bg"
+                android:hint="E.g. Ford"
+                android:inputType="text"
+                android:paddingHorizontal="18dp"
+                android:paddingVertical="12dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginTop="16dp"
+                android:alpha="0.6"
+                android:text="Vehicle Model"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/editTextVehicleModel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/yellow_edittext_bg"
+                android:hint="E.g. Focus"
+                android:inputType="text"
+                android:paddingHorizontal="18dp"
+                android:paddingVertical="12dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnContinue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="@color/accent"
+                android:letterSpacing="0.04"
+                android:paddingVertical="14dp"
+                android:text="UPDATE"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:cornerRadius="6dp" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
