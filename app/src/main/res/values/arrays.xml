@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="locale_code" translatable="false">
+        <item>en-US</item>
+        <item>bn-BD</item>
+    </string-array>
+</resources>
