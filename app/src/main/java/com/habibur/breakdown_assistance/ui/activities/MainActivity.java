@@ -2,14 +2,17 @@ package com.habibur.breakdown_assistance.ui.activities;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Window;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.splashscreen.SplashScreen;
 import androidx.core.view.WindowCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.shape.MaterialShapeDrawable;
 import com.habibur.breakdown_assistance.R;
@@ -20,16 +23,25 @@ import com.habibur.breakdown_assistance.ui.fragments.MainFragment;
 import com.habibur.breakdown_assistance.utils.LocaleHelper;
 
 import java.util.Objects;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.Executors;
 
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
     private static FragmentManager fragmentManager;
+    private boolean isLoading = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
+        splashScreen.setKeepOnScreenCondition(() -> isLoading);
+
         binding = ActivityMainBinding.inflate(getLayoutInflater());
+
+        initializeDummyMap();
         setContentView(binding.getRoot());
         setupEdgeToEdge();
 
@@ -72,6 +84,29 @@ public class MainActivity extends AppCompatActivity {
         }
 
         fragmentTransaction.commit();
+    }
+
+    private void initializeDummyMap() {
+        Executors.newSingleThreadExecutor().execute(() -> {
+            CountDownLatch latch = new CountDownLatch(1);
+
+            runOnUiThread(() -> {
+                SupportMapFragment dummyMapFragment = new SupportMapFragment();
+                getSupportFragmentManager().beginTransaction().add(dummyMapFragment, "dummyMapFragment").commit();
+
+                dummyMapFragment.getMapAsync(googleMap -> {
+                    Log.d(MainActivity.class.getSimpleName(), "Dummy map is ready");
+                    latch.countDown();
+                });
+            });
+
+            try {
+                latch.await();
+            } catch (InterruptedException ignored) {
+            }
+
+            runOnUiThread(() -> isLoading = false);
+        });
     }
 
     @Override
