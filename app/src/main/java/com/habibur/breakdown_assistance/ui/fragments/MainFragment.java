@@ -28,7 +28,7 @@ public class MainFragment extends BaseFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Prefs.putBoolean("first_run", false);
+        Prefs.putBoolean("logged_in", false);
     }
 
     @Override
