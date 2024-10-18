@@ -7,6 +7,9 @@ public class GarageModel {
     private double latitude;
     private double longitude;
 
+    public GarageModel() {
+    }
+
     public GarageModel(String id, String name, double latitude, double longitude) {
         this.id = id;
         this.name = name;
