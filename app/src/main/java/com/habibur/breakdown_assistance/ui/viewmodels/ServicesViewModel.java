@@ -1,6 +1,5 @@
 package com.habibur.breakdown_assistance.ui.viewmodels;
 
-import static com.habibur.breakdown_assistance.BreakdownAssistance.getFirestore;
 import static com.habibur.breakdown_assistance.config.Constants.SERVICES_DATABASE;
 
 import androidx.lifecycle.LiveData;
@@ -15,7 +14,7 @@ import java.util.List;
 
 public class ServicesViewModel extends ViewModel {
 
-    private final FirebaseFirestore firestore = getFirestore();
+    private final FirebaseFirestore firestore = FirebaseFirestore.getInstance();
 
     private final MutableLiveData<Resource<List<ServiceModel>>> _allServices = new MutableLiveData<>();
     public final LiveData<Resource<List<ServiceModel>>> allServices = _allServices;
