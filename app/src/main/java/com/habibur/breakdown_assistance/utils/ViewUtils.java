@@ -15,12 +15,19 @@ import com.google.android.material.appbar.MaterialToolbar;
 public class ViewUtils {
 
     public static void applyWindowInsets(View view, boolean top, boolean bottom) {
+        int originalPaddingTop = view.getPaddingTop();
+        int originalPaddingBottom = view.getPaddingBottom();
+        int originalPaddingLeft = view.getPaddingLeft();
+        int originalPaddingRight = view.getPaddingRight();
+
         ViewCompat.setOnApplyWindowInsetsListener(view, (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            int paddingTop = top ? systemBars.top + view.getPaddingTop() : view.getPaddingTop();
-            int paddingBottom = bottom ? systemBars.bottom + view.getPaddingBottom() : view.getPaddingBottom();
-            int paddingLeft = systemBars.left + view.getPaddingLeft();
-            int paddingRight = systemBars.right + view.getPaddingRight();
+
+            int paddingTop = top ? systemBars.top + originalPaddingTop : originalPaddingTop;
+            int paddingBottom = bottom ? systemBars.bottom + originalPaddingBottom : originalPaddingBottom;
+            int paddingLeft = systemBars.left + originalPaddingLeft;
+            int paddingRight = systemBars.right + originalPaddingRight;
+
             v.setPadding(paddingLeft, paddingTop, paddingRight, paddingBottom);
             return insets;
         });
