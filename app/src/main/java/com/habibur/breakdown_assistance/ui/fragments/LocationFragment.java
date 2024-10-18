@@ -7,6 +7,11 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.habibur.breakdown_assistance.R;
 import com.habibur.breakdown_assistance.databinding.FragmentLocationBinding;
 import com.habibur.breakdown_assistance.utils.ViewUtils;
@@ -21,36 +26,23 @@ public class LocationFragment extends BaseFragment {
 
         ViewUtils.setToolbarTitle(requireContext(), binding.header.toolbar, R.string.location, true);
 
-        binding.mapView.onCreate(savedInstanceState);
+        SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager()
+                .findFragmentById(R.id.map_fragment);
 
-//        binding.mapView.getMapAsync(googleMap -> {
-//            googleMap.getUiSettings().setMyLocationButtonEnabled(false);
-//            googleMap.setMyLocationEnabled(true);
-//
-//            MapsInitializer.initialize(requireContext());
-//
-//            CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(43.1, -87.9), 10);
-//            googleMap.animateCamera(cameraUpdate);
-//        });
+        if (mapFragment != null) {
+            mapFragment.getMapAsync(googleMap -> {
+                LatLng location = new LatLng(23.7104, 90.40744);
+
+                MarkerOptions markerOptions = new MarkerOptions()
+                        .position(location)
+                        .title("My Location");
+                googleMap.addMarker(markerOptions);
+
+                CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(location, 10);
+                googleMap.animateCamera(cameraUpdate);
+            });
+        }
 
         return binding.getRoot();
-    }
-
-    @Override
-    public void onResume() {
-        binding.mapView.onResume();
-        super.onResume();
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        binding.mapView.onDestroy();
-    }
-
-    @Override
-    public void onLowMemory() {
-        super.onLowMemory();
-        binding.mapView.onLowMemory();
     }
 }
