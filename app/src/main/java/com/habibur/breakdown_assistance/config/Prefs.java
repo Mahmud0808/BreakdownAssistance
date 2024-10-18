@@ -87,4 +87,16 @@ public class Prefs {
     public static void clearAllPrefs() {
         editor.clear().apply();
     }
+
+    public static boolean isAdminOrMechanic() {
+        return isAdmin() || isMechanic();
+    }
+
+    public static boolean isAdmin() {
+        return prefs.getString("account_type", "USER").equals("ADMIN");
+    }
+
+    public static boolean isMechanic() {
+        return prefs.getString("account_type", "USER").equals("MECHANIC");
+    }
 }

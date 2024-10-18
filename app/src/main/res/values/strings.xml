@@ -5,6 +5,8 @@
     <string name="location">Location</string>
     <string name="profile">Profile</string>
     <string name="panel">Panel</string>
+    <string name="new_garage">New Garage</string>
+    <string name="new_service">New Service</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="otp_description"><![CDATA[We will send you a <b>One Time Password</b> to this mobile number]]></string>

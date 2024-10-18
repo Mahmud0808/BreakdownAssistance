@@ -7,7 +7,9 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 
+import com.habibur.breakdown_assistance.R;
 import com.habibur.breakdown_assistance.databinding.FragmentNewGarageBinding;
+import com.habibur.breakdown_assistance.utils.ViewUtils;
 
 public class NewGarageFragment extends BaseFragment {
 
@@ -16,6 +18,9 @@ public class NewGarageFragment extends BaseFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentNewGarageBinding.inflate(inflater, container, false);
+
+        ViewUtils.setToolbarTitle(requireContext(), binding.header.toolbar, R.string.new_garage, true);
+
         return binding.getRoot();
     }
 }
