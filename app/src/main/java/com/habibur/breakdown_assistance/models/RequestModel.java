@@ -8,14 +8,16 @@ public class RequestModel {
     private GarageModel garage;
     private String additionalInfo;
     private RequestStatus status;
+    private String feedback;
 
-    public RequestModel(String id, UserModel user, ServiceModel service, GarageModel garage, String additionalInfo, RequestStatus status) {
+    public RequestModel(String id, UserModel user, ServiceModel service, GarageModel garage, String additionalInfo, RequestStatus status, String feedback) {
         this.id = id;
         this.user = user;
         this.service = service;
         this.garage = garage;
         this.additionalInfo = additionalInfo;
         this.status = status;
+        this.feedback = feedback;
     }
 
     public String getId() {
@@ -64,5 +66,13 @@ public class RequestModel {
 
     public void setStatus(RequestStatus status) {
         this.status = status;
+    }
+
+    public String getFeedback() {
+        return feedback;
+    }
+
+    public void setFeedback(String feedback) {
+        this.feedback = feedback;
     }
 }
