@@ -110,6 +110,8 @@ public class LocationFragment extends BaseFragment {
                 currentMarker.remove();
             }
 
+            googleMap.getUiSettings().setMapToolbarEnabled(false);
+
             MarkerOptions markerOptions = new MarkerOptions()
                     .position(latlng)
                     .title("My Location");
