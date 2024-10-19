@@ -6,30 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragments.ServicesFragment">
 
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/nestedScrollView"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:paddingHorizontal="24dp"
-            android:paddingTop="24dp"
-            android:paddingBottom="6dp">
-
-            <include layout="@layout/view_service_list_item" />
-
-            <include layout="@layout/view_service_list_item" />
-
-            <include layout="@layout/view_service_list_item" />
-
-            <include layout="@layout/view_service_list_item" />
-
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+        android:paddingHorizontal="24dp"
+        android:paddingTop="24dp"
+        android:paddingBottom="6dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:listitem="@layout/item_service_list" />
 
     <include
         android:id="@+id/header"

@@ -1,18 +1,26 @@
 package com.habibur.breakdown_assistance.ui.fragments;
 
+import static com.habibur.breakdown_assistance.config.Constants.USER_DATABASE;
+
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.habibur.breakdown_assistance.R;
 import com.habibur.breakdown_assistance.config.Prefs;
 import com.habibur.breakdown_assistance.databinding.FragmentProfileBinding;
+import com.habibur.breakdown_assistance.models.UserModel;
 import com.habibur.breakdown_assistance.ui.activities.MainActivity;
 import com.habibur.breakdown_assistance.utils.ViewUtils;
+
+import java.util.Objects;
 
 public class ProfileFragment extends BaseFragment {
 
@@ -30,6 +38,77 @@ public class ProfileFragment extends BaseFragment {
             FirebaseAuth.getInstance().signOut();
             MainActivity.replaceFragment(new LandingFragment());
         });
+
+        String userId = FirebaseAuth.getInstance().getUid();
+
+        if (userId != null) {
+            FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+
+            firestore.collection(USER_DATABASE).document(userId)
+                    .addSnapshotListener((documentSnapshot, error) -> {
+                        if (error != null) {
+                            Log.e(ProfileFragment.class.getSimpleName(), Objects.requireNonNull(error.getMessage()));
+                            return;
+                        }
+
+                        if (documentSnapshot != null && documentSnapshot.exists()) {
+                            UserModel user = documentSnapshot.toObject(UserModel.class);
+
+                            if (user != null) {
+                                binding.editTextFullName.setText(user.getName());
+                                binding.editTextPhoneNumber.setText(user.getPhone());
+                                binding.editTextVehicleCompany.setText(user.getVehicleCompany());
+                                binding.editTextVehicleModel.setText(user.getVehicleModel());
+                            }
+                        } else {
+                            Log.e(ProfileFragment.class.getSimpleName(), "User not found");
+                        }
+                    });
+
+            binding.btnUpdate.setOnClickListener(v -> {
+                String name = binding.editTextFullName.getText().toString().trim();
+                String phone = binding.editTextPhoneNumber.getText().toString().trim();
+                String vehicleCompany = binding.editTextVehicleCompany.getText().toString().trim();
+                String vehicleModel = binding.editTextVehicleModel.getText().toString().trim();
+                boolean error = false;
+
+                if (name.isEmpty()) {
+                    binding.editTextFullName.setError("Enter name");
+                    error = true;
+                }
+
+                if (phone.isEmpty() || !phone.matches("^[+]?[0-9]{11,13}$")) {
+                    binding.editTextPhoneNumber.setError("Enter valid phone number");
+                    error = true;
+                }
+
+                if (vehicleCompany.isEmpty()) {
+                    binding.editTextVehicleCompany.setError("Enter vehicle company");
+                    error = true;
+                }
+
+                if (vehicleModel.isEmpty()) {
+                    binding.editTextVehicleModel.setError("Enter vehicle model");
+                    error = true;
+                }
+
+                if (error) {
+                    return;
+                }
+
+                UserModel userModel = new UserModel(userId, name, phone, vehicleCompany, vehicleModel);
+
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+                db.collection(USER_DATABASE).document(userId).set(userModel)
+                        .addOnSuccessListener(aVoid -> {
+                            Toast.makeText(requireContext(), "Profile updated successfully", Toast.LENGTH_SHORT).show();
+                        })
+                        .addOnFailureListener(e -> {
+                            Toast.makeText(requireContext(), "Profile update failed: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                        });
+            });
+        }
 
         return binding.getRoot();
     }
