@@ -1,10 +1,13 @@
 package com.habibur.breakdown_assistance.ui.fragments;
 
+import static com.habibur.breakdown_assistance.config.Constants.GARAGES_DATABASE;
+
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.Looper;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,12 +27,23 @@ import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.ListenerRegistration;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.habibur.breakdown_assistance.R;
 import com.habibur.breakdown_assistance.databinding.FragmentLocationBinding;
+import com.habibur.breakdown_assistance.models.GarageModel;
 import com.habibur.breakdown_assistance.utils.ViewUtils;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 public class LocationFragment extends BaseFragment {
 
@@ -39,6 +53,8 @@ public class LocationFragment extends BaseFragment {
     private LocationCallback locationCallback;
     private GoogleMap googleMap;
     private Marker currentMarker;
+    private ListenerRegistration listenerRegistration;
+    private final List<GarageModel> garageModels = new ArrayList<>();
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -106,7 +122,6 @@ public class LocationFragment extends BaseFragment {
             LatLng latlng = new LatLng(location.getLatitude(), location.getLongitude());
 
             if (currentMarker != null) {
-                googleMap.clear();
                 currentMarker.remove();
             }
 
@@ -119,6 +134,59 @@ public class LocationFragment extends BaseFragment {
 
             CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latlng, 15);
             googleMap.animateCamera(cameraUpdate);
+
+            fetchGaragesAndDisplay();
+        }
+    }
+
+    private void fetchGaragesAndDisplay() {
+        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+
+        listenerRegistration = firestore.collection(GARAGES_DATABASE)
+                .addSnapshotListener((QuerySnapshot snapshots, FirebaseFirestoreException e) -> {
+                    if (e != null) {
+                        Log.d(LocationFragment.class.getSimpleName(), Objects.requireNonNull(e.getMessage()));
+                        return;
+                    }
+
+                    if (snapshots != null) {
+                        for (DocumentSnapshot snapshot : snapshots) {
+                            GarageModel garage = snapshot.toObject(GarageModel.class);
+                            if (garage != null) {
+                                garageModels.add(garage);
+                            }
+                        }
+
+                        displayGaragesOnMap(garageModels);
+                    }
+                });
+    }
+
+    private void displayGaragesOnMap(List<GarageModel> garageModels) {
+        if (googleMap != null) {
+            for (GarageModel garage : garageModels) {
+                LatLng latLng = new LatLng(garage.getLatitude(), garage.getLongitude());
+                MarkerOptions markerOptions = new MarkerOptions()
+                        .position(latLng)
+                        .title(garage.getName())
+                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_garage));
+                googleMap.addMarker(markerOptions);
+            }
+
+            if (!garageModels.isEmpty()) {
+                GarageModel firstGarage = garageModels.get(0);
+                LatLng firstLatLng = new LatLng(firstGarage.getLatitude(), firstGarage.getLongitude());
+                CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(firstLatLng, 15);
+                googleMap.animateCamera(cameraUpdate);
+            }
+        }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if (listenerRegistration != null) {
+            listenerRegistration.remove();
         }
     }
 }
