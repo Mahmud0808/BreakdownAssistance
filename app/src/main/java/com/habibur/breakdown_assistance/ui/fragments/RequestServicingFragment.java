@@ -2,6 +2,7 @@ package com.habibur.breakdown_assistance.ui.fragments;
 
 import static com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions.withCrossFade;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +22,7 @@ public class RequestServicingFragment extends BaseFragment {
 
     private FragmentRequestServicingBinding binding;
 
+    @SuppressLint("SetTextI18n")
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentRequestServicingBinding.inflate(inflater, container, false);
@@ -46,9 +48,9 @@ public class RequestServicingFragment extends BaseFragment {
                 binding.textViewDescription.setText(serviceModel.getDescription());
                 binding.editTextVehicleCompany.setText(userModel.getVehicleCompany());
                 binding.editTextVehicleModel.setText(userModel.getVehicleModel());
-                binding.editTextMinimumPrice.setText(String.valueOf(serviceModel.getMinimumPrice()));
-                binding.editTextServiceCharge.setText(String.valueOf(serviceModel.getServiceCharge()));
-                binding.editTextDuration.setText(String.valueOf(serviceModel.getDurationHours() + " Hour(s)"));
+                binding.editTextMinimumPrice.setText("৳ " + serviceModel.getMinimumPrice());
+                binding.editTextServiceCharge.setText("৳ " + serviceModel.getServiceCharge());
+                binding.editTextDuration.setText(serviceModel.getDurationHours() + " Hour(s)");
             }
         }
 
