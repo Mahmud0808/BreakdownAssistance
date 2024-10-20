@@ -50,7 +50,7 @@ public class RequestServicingFragment extends BaseFragment {
                 binding.editTextVehicleModel.setText(userModel.getVehicleModel());
                 binding.editTextMinimumPrice.setText("৳ " + serviceModel.getMinimumPrice());
                 binding.editTextServiceCharge.setText("৳ " + serviceModel.getServiceCharge());
-                binding.editTextDuration.setText(serviceModel.getDurationHours() + " Hour(s)");
+                binding.editTextDuration.setText(serviceModel.getDurationHours() + " Hour" + (serviceModel.getDurationHours() > 1 ? "s" : ""));
             }
         }
 
