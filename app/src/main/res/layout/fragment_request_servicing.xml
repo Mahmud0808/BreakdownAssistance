@@ -86,6 +86,72 @@
                 android:layout_gravity="start"
                 android:layout_marginTop="16dp"
                 android:alpha="0.6"
+                android:text="Minimum Price"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/editTextMinimumPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:enabled="false"
+                android:inputType="number"
+                android:paddingHorizontal="18dp"
+                android:paddingVertical="12dp"
+                android:text="৳ 149"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginTop="8dp"
+                android:alpha="0.6"
+                android:text="Service Charge"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/editTextServiceCharge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:enabled="false"
+                android:inputType="number"
+                android:paddingHorizontal="18dp"
+                android:paddingVertical="12dp"
+                android:text="৳ 199"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginTop="8dp"
+                android:alpha="0.6"
+                android:text="Duration"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/editTextDuration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:enabled="false"
+                android:inputType="number"
+                android:paddingHorizontal="18dp"
+                android:paddingVertical="12dp"
+                android:text="1 Hour(s)"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginTop="8dp"
+                android:alpha="0.6"
                 android:text="Vehicle Company"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
@@ -121,75 +187,6 @@
                 android:inputType="text"
                 android:paddingHorizontal="18dp"
                 android:paddingVertical="12dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:layout_marginTop="16dp"
-                android:alpha="0.6"
-                android:text="Minimum Price"
-                android:textColor="@color/black"
-                android:textSize="14sp" />
-
-            <EditText
-                android:id="@+id/editTextMinimumPrice"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/semi_transparent_black_bg"
-                android:enabled="false"
-                android:inputType="number"
-                android:paddingHorizontal="18dp"
-                android:paddingVertical="12dp"
-                android:text="149"
-                android:textColor="@color/black" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:layout_marginTop="16dp"
-                android:alpha="0.6"
-                android:text="Service Charge"
-                android:textColor="@color/black"
-                android:textSize="14sp" />
-
-            <EditText
-                android:id="@+id/editTextServiceCharge"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/semi_transparent_black_bg"
-                android:enabled="false"
-                android:inputType="number"
-                android:paddingHorizontal="18dp"
-                android:paddingVertical="12dp"
-                android:text="199"
-                android:textColor="@color/black" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:layout_marginTop="16dp"
-                android:alpha="0.6"
-                android:text="Duration"
-                android:textColor="@color/black"
-                android:textSize="14sp" />
-
-            <EditText
-                android:id="@+id/editTextDuration"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/semi_transparent_black_bg"
-                android:enabled="false"
-                android:inputType="number"
-                android:paddingHorizontal="18dp"
-                android:paddingVertical="12dp"
-                android:text="1 Hour(s)"
-                android:textColor="@color/black" />
 
             <TextView
                 android:layout_width="wrap_content"
