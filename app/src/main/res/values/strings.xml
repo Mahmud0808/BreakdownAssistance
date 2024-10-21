@@ -11,7 +11,9 @@
     <string name="servicing">Servicing</string>
     <string name="servicing_history">Servicing History</string>
     <string name="servicing_requests">Servicing Requests</string>
+    <string name="my_servicing_requests">My Servicing Requests</string>
     <string name="users">Users</string>
+    <string name="complaint">Complaint</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="otp_description"><![CDATA[We will send you a <b>One Time Password</b> to this mobile number]]></string>

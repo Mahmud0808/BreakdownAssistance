@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -25,6 +26,7 @@ import java.util.Objects;
 public class ProfileFragment extends BaseFragment {
 
     private FragmentProfileBinding binding;
+    private UserModel currentUser;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -52,13 +54,13 @@ public class ProfileFragment extends BaseFragment {
                         }
 
                         if (documentSnapshot != null && documentSnapshot.exists()) {
-                            UserModel user = documentSnapshot.toObject(UserModel.class);
+                            currentUser = documentSnapshot.toObject(UserModel.class);
 
-                            if (user != null) {
-                                binding.editTextFullName.setText(user.getName());
-                                binding.editTextPhoneNumber.setText(user.getPhone());
-                                binding.editTextVehicleCompany.setText(user.getVehicleCompany());
-                                binding.editTextVehicleModel.setText(user.getVehicleModel());
+                            if (currentUser != null) {
+                                binding.editTextFullName.setText(currentUser.getName());
+                                binding.editTextPhoneNumber.setText(currentUser.getPhone());
+                                binding.editTextVehicleCompany.setText(currentUser.getVehicleCompany());
+                                binding.editTextVehicleModel.setText(currentUser.getVehicleModel());
                             }
                         } else {
                             Log.e(ProfileFragment.class.getSimpleName(), "User not found");
@@ -107,6 +109,20 @@ public class ProfileFragment extends BaseFragment {
                         .addOnFailureListener(e -> {
                             Toast.makeText(requireContext(), "Profile update failed: " + e.getMessage(), Toast.LENGTH_LONG).show();
                         });
+            });
+
+            binding.cardHistory.setOnClickListener(v -> MainFragment.replaceFragment(new MyServicingRequestsFragment()));
+
+            binding.cardComplaint.setOnClickListener(v -> {
+                if (currentUser != null) {
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("user", currentUser);
+
+                    Fragment fragment = new SubmitComplaintFragment();
+                    fragment.setArguments(bundle);
+
+                    MainFragment.replaceFragment(fragment);
+                }
             });
         }
 
