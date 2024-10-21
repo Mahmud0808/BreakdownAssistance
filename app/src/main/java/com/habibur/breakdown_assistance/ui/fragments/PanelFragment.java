@@ -20,7 +20,7 @@ public class PanelFragment extends BaseFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentPanelBinding.inflate(inflater, container, false);
 
-        ViewUtils.setToolbarTitle(requireContext(), binding.header.toolbar, R.string.panel, true);
+        ViewUtils.setToolbarTitle(requireContext(), binding.header.toolbar, R.string.control_panel, !Prefs.isMechanic());
 
         binding.cardAddGarage.setVisibility(Prefs.isAdmin() ? View.VISIBLE : View.GONE);
         binding.cardAddGarage.setOnClickListener(v -> MainFragment.replaceFragment(new NewGarageFragment()));
@@ -34,9 +34,15 @@ public class PanelFragment extends BaseFragment {
         binding.cardViewComplaints.setVisibility(Prefs.isAdmin() ? View.VISIBLE : View.GONE);
 
         binding.cardServiceRequest.setVisibility(Prefs.isMechanic() ? View.VISIBLE : View.GONE);
+        binding.cardServiceRequest.setOnClickListener(v -> MainFragment.replaceFragment(new ServicingRequestsFragment()));
 
         binding.cardViewHistory.setVisibility(Prefs.isAdminOrMechanic() ? View.VISIBLE : View.GONE);
         binding.cardViewHistory.setOnClickListener(v -> MainFragment.replaceFragment(new ServicingHistoryFragment()));
+
+        if (Prefs.isMechanic()) {
+            binding.linearLayout1.setVisibility(View.GONE);
+            binding.linearLayout2.setVisibility(View.GONE);
+        }
 
         return binding.getRoot();
     }

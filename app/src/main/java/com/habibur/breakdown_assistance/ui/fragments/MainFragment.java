@@ -39,7 +39,11 @@ public class MainFragment extends BaseFragment {
         ViewUtils.applyWindowInsets(binding.bottomNavigationView, false, true);
 
         if (savedInstanceState == null) {
-            replaceFragment(new HomeFragment());
+            if (!Prefs.isMechanic()) {
+                replaceFragment(new HomeFragment());
+            } else {
+                replaceFragment(new PanelFragment());
+            }
         }
 
         return binding.getRoot();

@@ -11,67 +11,58 @@ import android.view.ViewGroup;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.habibur.breakdown_assistance.R;
-import com.habibur.breakdown_assistance.adapters.ServicingHistoryAdapter;
-import com.habibur.breakdown_assistance.config.Prefs;
-import com.habibur.breakdown_assistance.databinding.FragmentServicingHistoryBinding;
+import com.habibur.breakdown_assistance.adapters.ServicingRequestAdapter;
+import com.habibur.breakdown_assistance.databinding.FragmentServicingRequestsBinding;
 import com.habibur.breakdown_assistance.models.RequestServiceModel;
+import com.habibur.breakdown_assistance.models.RequestStatus;
 import com.habibur.breakdown_assistance.utils.ViewUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class ServicingHistoryFragment extends BaseFragment {
+public class ServicingRequestsFragment extends BaseFragment {
 
-    private FragmentServicingHistoryBinding binding;
-    private ServicingHistoryAdapter adapter;
+    private FragmentServicingRequestsBinding binding;
+    private ServicingRequestAdapter adapter;
     private final List<RequestServiceModel> requestServiceList = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        binding = FragmentServicingHistoryBinding.inflate(inflater, container, false);
+        binding = FragmentServicingRequestsBinding.inflate(inflater, container, false);
 
-        ViewUtils.setToolbarTitle(requireContext(), binding.header.toolbar, R.string.servicing_history, true);
+        ViewUtils.setToolbarTitle(requireContext(), binding.header.toolbar, R.string.servicing_requests, true);
 
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
-        adapter = new ServicingHistoryAdapter(requireContext(), requestServiceList);
+        adapter = new ServicingRequestAdapter(requireContext(), requestServiceList);
         binding.recyclerView.setAdapter(adapter);
 
-        fetchServicingHistories();
+        fetchServicingRequests();
 
         return binding.getRoot();
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    private void fetchServicingHistories() {
+    private void fetchServicingRequests() {
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
 
         firestore.collection(REQUESTED_SERVICES_DATABASE).addSnapshotListener((value, error) -> {
             if (error != null) {
-                Log.d(ServicingHistoryFragment.class.getSimpleName(), Objects.requireNonNull(error.getMessage()));
+                Log.d(ServicingRequestsFragment.class.getSimpleName(), Objects.requireNonNull(error.getMessage()));
                 return;
             }
 
             requestServiceList.clear();
 
             if (value != null) {
-                String userId = FirebaseAuth.getInstance().getUid();
-
                 for (DocumentSnapshot doc : value) {
                     RequestServiceModel requestedService = doc.toObject(RequestServiceModel.class);
 
-                    if (requestedService != null) {
-                        if (Prefs.isAdmin()) {
-                            requestServiceList.add(requestedService);
-                        } else if (Prefs.isMechanic()) {
-                            if (requestedService.getAssignedTo() != null && Objects.equals(requestedService.getAssignedTo().getId(), userId)) {
-                                requestServiceList.add(requestedService);
-                            }
-                        }
+                    if (requestedService != null && requestedService.getStatus() == RequestStatus.PENDING) {
+                        requestServiceList.add(requestedService);
                     }
                 }
                 adapter.notifyDataSetChanged();
