@@ -128,7 +128,7 @@ public class OtpVerificationFragment extends Fragment {
 
     private void verifyCode(String code) {
         if (verificationId.isEmpty()) {
-            Toast.makeText(requireContext(), "Unexpected error occurred.", Toast.LENGTH_LONG).show();
+            Toast.makeText(requireContext(), "Unexpected error occurred. Please try again.", Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -195,7 +195,7 @@ public class OtpVerificationFragment extends Fragment {
             });
         } else {
             // Fallback case, user should not be null here
-            Toast.makeText(requireContext(), "Unexpected error occurred.", Toast.LENGTH_LONG).show();
+            Toast.makeText(requireContext(), "Unexpected error occurred. Please try again.", Toast.LENGTH_LONG).show();
         }
     }
 
