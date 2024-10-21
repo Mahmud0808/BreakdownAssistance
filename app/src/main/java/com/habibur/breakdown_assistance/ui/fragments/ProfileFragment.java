@@ -126,6 +126,10 @@ public class ProfileFragment extends BaseFragment {
             });
         }
 
+        if (Prefs.isAdminOrMechanic()) {
+            binding.linearLayoutCards.setVisibility(View.GONE);
+        }
+
         return binding.getRoot();
     }
 }
