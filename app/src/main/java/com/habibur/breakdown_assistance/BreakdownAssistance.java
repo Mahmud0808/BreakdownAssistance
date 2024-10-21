@@ -18,7 +18,6 @@ public class BreakdownAssistance extends Application {
         super.onCreate();
         instance = this;
         contextReference = new WeakReference<>(getApplicationContext());
-        FirebaseFirestore.setLoggingEnabled(BuildConfig.DEBUG);
     }
 
     public static Context getAppContext() {
