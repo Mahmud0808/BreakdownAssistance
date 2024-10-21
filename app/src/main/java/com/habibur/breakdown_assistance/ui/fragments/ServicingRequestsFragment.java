@@ -66,6 +66,10 @@ public class ServicingRequestsFragment extends BaseFragment {
                     }
                 }
                 adapter.notifyDataSetChanged();
+
+                if (!requestServiceList.isEmpty()) {
+                    binding.noRequestFound.setVisibility(View.GONE);
+                }
             }
         });
     }

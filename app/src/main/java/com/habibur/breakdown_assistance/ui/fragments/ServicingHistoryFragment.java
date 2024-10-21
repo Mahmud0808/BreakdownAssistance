@@ -75,6 +75,10 @@ public class ServicingHistoryFragment extends BaseFragment {
                     }
                 }
                 adapter.notifyDataSetChanged();
+
+                if (!requestServiceList.isEmpty()) {
+                    binding.noHistoryFound.setVisibility(View.GONE);
+                }
             }
         });
     }
