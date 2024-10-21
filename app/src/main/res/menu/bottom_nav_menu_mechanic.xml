@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_panel"
+        android:enabled="true"
+        android:icon="@drawable/ic_nav_panel"
+        android:title="@string/panel" />
+    <item
+        android:id="@+id/nav_location"
+        android:enabled="true"
+        android:icon="@drawable/ic_nav_location"
+        android:title="@string/location" />
+    <item
+        android:id="@+id/nav_profile"
+        android:enabled="true"
+        android:icon="@drawable/ic_nav_profile"
+        android:title="@string/profile" />
+</menu>
