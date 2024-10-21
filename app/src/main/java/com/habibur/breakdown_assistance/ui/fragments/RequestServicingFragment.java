@@ -21,7 +21,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.habibur.breakdown_assistance.R;
 import com.habibur.breakdown_assistance.databinding.FragmentRequestServicingBinding;
 import com.habibur.breakdown_assistance.models.GarageModel;
-import com.habibur.breakdown_assistance.models.RequestModel;
+import com.habibur.breakdown_assistance.models.RequestServiceModel;
 import com.habibur.breakdown_assistance.models.RequestStatus;
 import com.habibur.breakdown_assistance.models.ServiceModel;
 import com.habibur.breakdown_assistance.models.UserModel;
@@ -102,11 +102,11 @@ public class RequestServicingFragment extends BaseFragment {
 
                     String requestId = UUID.randomUUID().toString();
 
-                    RequestModel requestModel = new RequestModel(requestId, userModel, serviceModel, selectedGarage, additionalInfo, RequestStatus.PENDING, null, null, null);
+                    RequestServiceModel requestServiceModel = new RequestServiceModel(requestId, userModel, serviceModel, selectedGarage, additionalInfo, RequestStatus.PENDING, null, null, null);
 
                     FirebaseFirestore firestore = FirebaseFirestore.getInstance();
                     firestore.collection(REQUESTED_SERVICES_DATABASE).document(requestId)
-                            .set(requestModel)
+                            .set(requestServiceModel)
                             .addOnSuccessListener(aVoid -> {
                                 if (getActivity() != null) {
                                     getActivity().onBackPressed();
@@ -178,7 +178,7 @@ public class RequestServicingFragment extends BaseFragment {
                         boolean requestExists = false;
 
                         for (QueryDocumentSnapshot document : task.getResult()) {
-                            RequestModel request = document.toObject(RequestModel.class);
+                            RequestServiceModel request = document.toObject(RequestServiceModel.class);
 
                             if (request.getRequestedBy().getId().equals(userModel.getId()) &&
                                     request.getService().getId().equals(serviceModel.getId()) &&

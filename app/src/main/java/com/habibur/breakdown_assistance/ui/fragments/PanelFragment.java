@@ -35,7 +35,8 @@ public class PanelFragment extends BaseFragment {
 
         binding.cardServiceRequest.setVisibility(Prefs.isMechanic() ? View.VISIBLE : View.GONE);
 
-        binding.cardViewHistory.setVisibility(Prefs.isMechanic() ? View.VISIBLE : View.GONE);
+        binding.cardViewHistory.setVisibility(Prefs.isAdminOrMechanic() ? View.VISIBLE : View.GONE);
+        binding.cardViewHistory.setOnClickListener(v -> MainFragment.replaceFragment(new ServicingHistoryFragment()));
 
         return binding.getRoot();
     }
