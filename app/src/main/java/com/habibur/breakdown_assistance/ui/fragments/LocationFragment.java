@@ -4,6 +4,7 @@ import static com.habibur.breakdown_assistance.config.Constants.GARAGES_DATABASE
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.Looper;
@@ -39,6 +40,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.habibur.breakdown_assistance.R;
 import com.habibur.breakdown_assistance.databinding.FragmentLocationBinding;
 import com.habibur.breakdown_assistance.models.GarageModel;
+import com.habibur.breakdown_assistance.utils.DrawableUtils;
 import com.habibur.breakdown_assistance.utils.ViewUtils;
 
 import java.util.ArrayList;
@@ -132,14 +134,11 @@ public class LocationFragment extends BaseFragment {
                     .title(getString(R.string.my_location));
             currentMarker = googleMap.addMarker(markerOptions);
 
-            CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latlng, 15);
-            googleMap.animateCamera(cameraUpdate);
-
-            fetchGaragesAndDisplay();
+            fetchGaragesAndDisplay(latlng);
         }
     }
 
-    private void fetchGaragesAndDisplay() {
+    private void fetchGaragesAndDisplay(LatLng myLocation) {
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
 
         listenerRegistration = firestore.collection(GARAGES_DATABASE)
@@ -157,28 +156,26 @@ public class LocationFragment extends BaseFragment {
                             }
                         }
 
-                        displayGaragesOnMap(garageModels);
+                        displayGaragesOnMap(garageModels, myLocation);
                     }
                 });
     }
 
-    private void displayGaragesOnMap(List<GarageModel> garageModels) {
+    private void displayGaragesOnMap(List<GarageModel> garageModels, LatLng myLocation) {
         if (googleMap != null) {
             for (GarageModel garage : garageModels) {
                 LatLng latLng = new LatLng(garage.getLatitude(), garage.getLongitude());
+                Bitmap bitmap = DrawableUtils.drawableToBitmap(requireContext(), R.drawable.ic_garage_marker);
+                bitmap = DrawableUtils.tintBitmap(bitmap, requireContext().getColor(R.color.dark_purple));
                 MarkerOptions markerOptions = new MarkerOptions()
                         .position(latLng)
                         .title(garage.getName())
-                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_garage));
+                        .icon(BitmapDescriptorFactory.fromBitmap(bitmap));
                 googleMap.addMarker(markerOptions);
             }
 
-            if (!garageModels.isEmpty()) {
-                GarageModel firstGarage = garageModels.get(0);
-                LatLng firstLatLng = new LatLng(firstGarage.getLatitude(), firstGarage.getLongitude());
-                CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(firstLatLng, 15);
-                googleMap.animateCamera(cameraUpdate);
-            }
+            CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(myLocation, 12);
+            googleMap.animateCamera(cameraUpdate);
         }
     }
 
