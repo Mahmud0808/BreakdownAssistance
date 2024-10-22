@@ -53,7 +53,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Add New Garage"
+                            android:text="@string/add_new_garage"
                             android:textAlignment="center"
                             android:textColor="@color/black"
                             android:textSize="14sp" />
@@ -87,7 +87,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Add New Service"
+                            android:text="@string/add_new_service"
                             android:textAlignment="center"
                             android:textColor="@color/black"
                             android:textSize="14sp" />
@@ -131,7 +131,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="User List"
+                            android:text="@string/user_list"
                             android:textAlignment="center"
                             android:textColor="@color/black"
                             android:textSize="14sp" />
@@ -165,7 +165,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="User Complaints"
+                            android:text="@string/user_complaints"
                             android:textAlignment="center"
                             android:textColor="@color/black"
                             android:textSize="14sp" />
@@ -209,7 +209,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Servicing Requests"
+                            android:text="@string/servicing_requests"
                             android:textAlignment="center"
                             android:textColor="@color/black"
                             android:textSize="14sp" />
@@ -243,7 +243,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Servicing History"
+                            android:text="@string/servicing_history"
                             android:textAlignment="center"
                             android:textColor="@color/black"
                             android:textSize="14sp" />

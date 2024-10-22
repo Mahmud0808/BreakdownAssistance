@@ -30,7 +30,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Your Information"
+                    android:text="@string/your_information"
                     android:textColor="@color/black"
                     android:textSize="24sp"
                     android:textStyle="bold" />
@@ -46,7 +46,7 @@
                     android:minHeight="0dp"
                     android:paddingHorizontal="12dp"
                     android:paddingVertical="8dp"
-                    android:text="Logout"
+                    android:text="@string/logout"
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     app:cornerRadius="6dp"
@@ -60,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:alpha="0.6"
-                android:text="Full Name"
+                android:text="@string/full_name"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
@@ -70,7 +70,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/semi_transparent_black_bg"
-                android:hint="E.g. John Doe"
+                android:hint="@string/full_name_hint"
                 android:inputType="textPersonName"
                 android:paddingHorizontal="18dp"
                 android:paddingVertical="12dp" />
@@ -81,7 +81,7 @@
                 android:layout_gravity="start"
                 android:layout_marginTop="16dp"
                 android:alpha="0.6"
-                android:text="Phone Number"
+                android:text="@string/phone_number"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
@@ -91,7 +91,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/semi_transparent_black_bg"
-                android:hint="+880 XXX XXX XXXX"
+                android:hint="@string/phone_number_hint"
                 android:inputType="phone"
                 android:paddingHorizontal="18dp"
                 android:paddingVertical="12dp" />
@@ -102,7 +102,7 @@
                 android:layout_gravity="start"
                 android:layout_marginTop="16dp"
                 android:alpha="0.6"
-                android:text="Vehicle Company"
+                android:text="@string/vehicle_company"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
@@ -112,7 +112,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/semi_transparent_black_bg"
-                android:hint="E.g. Ford"
+                android:hint="@string/vehicle_company_hint"
                 android:inputType="text"
                 android:paddingHorizontal="18dp"
                 android:paddingVertical="12dp" />
@@ -123,7 +123,7 @@
                 android:layout_gravity="start"
                 android:layout_marginTop="16dp"
                 android:alpha="0.6"
-                android:text="Vehicle Model"
+                android:text="@string/vehicle_model"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
@@ -133,7 +133,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/semi_transparent_black_bg"
-                android:hint="E.g. Focus"
+                android:hint="@string/vehicle_model_hint"
                 android:inputType="text"
                 android:paddingHorizontal="18dp"
                 android:paddingVertical="12dp" />
@@ -146,7 +146,7 @@
                 android:backgroundTint="@color/accent"
                 android:letterSpacing="0.04"
                 android:paddingVertical="14dp"
-                android:text="UPDATE"
+                android:text="@string/update"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 app:cornerRadius="6dp" />
@@ -187,7 +187,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="My Servicing Requests"
+                            android:text="@string/my_servicing_requests"
                             android:textAlignment="center"
                             android:textColor="@color/black"
                             android:textSize="14sp" />
@@ -221,7 +221,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Submit Complaint"
+                            android:text="@string/submit_complaint"
                             android:textAlignment="center"
                             android:textColor="@color/black"
                             android:textSize="14sp" />

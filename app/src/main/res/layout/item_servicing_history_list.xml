@@ -23,7 +23,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Service: "
+                android:text="@string/service_colon"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -46,7 +46,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Requested By: "
+                android:text="@string/requested_by_colon"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -69,7 +69,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Garage: "
+                android:text="@string/garage_colon"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -92,7 +92,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Status: "
+                android:text="@string/status_colon"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -115,7 +115,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Assigned To: "
+                android:text="@string/assigned_to_colon"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -125,52 +125,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Mechanic"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Feedback: "
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tvFeedback"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Good"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Review: "
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tvReview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Satisfied"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 
@@ -194,6 +148,54 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="11:00 AM"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/feedback_from_mechanic_colon"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvFeedback"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:justificationMode="inter_word"
+                android:text="I went there but the customer was not available."
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/review_colon"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvReview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:justificationMode="inter_word"
+                android:text="I am very much satisfied with the service."
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 

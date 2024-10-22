@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="40dp"
-            android:text="Log In"
+            android:text="@string/log_in"
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -47,7 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:alpha="0.6"
-            android:text="Enter Mobile Number"
+            android:text="@string/enter_mobile_number"
             android:textColor="@color/black"
             android:textSize="14sp" />
 
@@ -70,7 +70,7 @@
             android:backgroundTint="@color/white"
             android:letterSpacing="0.04"
             android:paddingVertical="14dp"
-            android:text="GET OTP"
+            android:text="@string/get_otp"
             android:textColor="@color/black"
             android:textSize="16sp"
             app:cornerRadius="6dp" />
@@ -84,7 +84,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Don't have an account?"
+                android:text="@string/dont_have_an_account"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 
@@ -99,7 +99,7 @@
                 android:id="@+id/textViewRegister"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Register"
+                android:text="@string/register"
                 android:textColor="#FF382E03"
                 android:textSize="16sp"
                 android:textStyle="bold" />

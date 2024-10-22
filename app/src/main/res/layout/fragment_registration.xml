@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="40dp"
-            android:text="Sign Up"
+            android:text="@string/sign_up"
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:alpha="0.6"
-            android:text="Full Name"
+            android:text="@string/full_name"
             android:textColor="@color/black"
             android:textSize="14sp" />
 
@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:background="@drawable/semi_transparent_black_bg"
-            android:hint="E.g. John Doe"
+            android:hint="@string/full_name_hint"
             android:inputType="textPersonName"
             android:paddingHorizontal="18dp"
             android:paddingVertical="12dp" />
@@ -52,7 +52,7 @@
             android:layout_gravity="start"
             android:layout_marginTop="16dp"
             android:alpha="0.6"
-            android:text="Phone Number"
+            android:text="@string/phone_number"
             android:textColor="@color/black"
             android:textSize="14sp" />
 
@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:background="@drawable/semi_transparent_black_bg"
-            android:hint="+880 XXX XXX XXXX"
+            android:hint="@string/phone_number_hint"
             android:inputType="phone"
             android:paddingHorizontal="18dp"
             android:paddingVertical="12dp" />
@@ -73,7 +73,7 @@
             android:layout_gravity="start"
             android:layout_marginTop="16dp"
             android:alpha="0.6"
-            android:text="Vehicle Company"
+            android:text="@string/vehicle_company"
             android:textColor="@color/black"
             android:textSize="14sp" />
 
@@ -83,7 +83,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:background="@drawable/semi_transparent_black_bg"
-            android:hint="E.g. Ford"
+            android:hint="@string/vehicle_company_hint"
             android:inputType="text"
             android:paddingHorizontal="18dp"
             android:paddingVertical="12dp" />
@@ -94,7 +94,7 @@
             android:layout_gravity="start"
             android:layout_marginTop="16dp"
             android:alpha="0.6"
-            android:text="Vehicle Model"
+            android:text="@string/vehicle_model"
             android:textColor="@color/black"
             android:textSize="14sp" />
 
@@ -104,7 +104,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:background="@drawable/semi_transparent_black_bg"
-            android:hint="E.g. Focus"
+            android:hint="@string/vehicle_model_hint"
             android:inputType="text"
             android:paddingHorizontal="18dp"
             android:paddingVertical="12dp" />
@@ -117,7 +117,7 @@
             android:backgroundTint="@color/white"
             android:letterSpacing="0.04"
             android:paddingVertical="14dp"
-            android:text="CONTINUE"
+            android:text="@string/continue_btn"
             android:textColor="@color/black"
             android:textSize="16sp"
             app:cornerRadius="6dp" />
@@ -131,7 +131,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Already have an account?"
+                android:text="@string/already_have_an_account"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 
@@ -146,7 +146,7 @@
                 android:id="@+id/textViewLogin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Login"
+                android:text="@string/login"
                 android:textColor="#FF382E03"
                 android:textSize="16sp"
                 android:textStyle="bold" />
