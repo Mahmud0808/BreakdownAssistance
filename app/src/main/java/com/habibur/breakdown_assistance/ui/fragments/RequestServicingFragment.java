@@ -73,10 +73,16 @@ public class RequestServicingFragment extends BaseFragment {
                 binding.editTextDuration.setText(serviceModel.getDurationHours() + " Hour" + (serviceModel.getDurationHours() > 1 ? "s" : ""));
 
                 binding.btnSubmit.setOnClickListener(v -> {
+                    String currentLocation = binding.editTextCurrentLocation.getText().toString().trim();
                     String vehicleCompany = binding.editTextVehicleCompany.getText().toString().trim();
                     String vehicleModel = binding.editTextVehicleModel.getText().toString().trim();
                     String additionalInfo = binding.editTextAdditionalInfo.getText().toString().trim();
                     boolean error = false;
+
+                    if (currentLocation.isEmpty()) {
+                        binding.editTextCurrentLocation.setError(getString(R.string.enter_current_location));
+                        error = true;
+                    }
 
                     if (vehicleCompany.isEmpty()) {
                         binding.editTextVehicleCompany.setError(getString(R.string.enter_vehicle_company));
@@ -102,7 +108,7 @@ public class RequestServicingFragment extends BaseFragment {
 
                     String requestId = UUID.randomUUID().toString();
 
-                    RequestServiceModel requestServiceModel = new RequestServiceModel(requestId, userModel, serviceModel, selectedGarage, additionalInfo, RequestStatus.PENDING, null, null, null);
+                    RequestServiceModel requestServiceModel = new RequestServiceModel(requestId, userModel, serviceModel, currentLocation, selectedGarage, additionalInfo, RequestStatus.PENDING, null, null, null);
 
                     FirebaseFirestore firestore = FirebaseFirestore.getInstance();
                     firestore.collection(REQUESTED_SERVICES_DATABASE).document(requestId)

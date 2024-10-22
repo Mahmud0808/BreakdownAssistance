@@ -10,7 +10,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.firestore.FirebaseFirestore;
 import com.habibur.breakdown_assistance.R;
 import com.habibur.breakdown_assistance.models.RequestServiceModel;
 import com.habibur.breakdown_assistance.utils.TimeUtils;
@@ -21,7 +20,6 @@ public class ServicingHistoryAdapter extends RecyclerView.Adapter<ServicingHisto
 
     private final Context context;
     private final List<RequestServiceModel> requestServiceList;
-    private final FirebaseFirestore firestore = FirebaseFirestore.getInstance();
 
     public ServicingHistoryAdapter(Context context, List<RequestServiceModel> requestServiceList) {
         this.context = context;
@@ -47,6 +45,7 @@ public class ServicingHistoryAdapter extends RecyclerView.Adapter<ServicingHisto
         holder.assignedTo.setText(requestService.getAssignedTo() != null ? requestService.getAssignedTo().getName() + " (" + requestService.getAssignedTo().getPhone() + ")" : context.getString(R.string.not_assigned));
         holder.feedback.setText(requestService.getFeedback() != null ? requestService.getFeedback() : context.getString(R.string.no_feedback));
         holder.review.setText(requestService.getReview() != null ? requestService.getReview() : context.getString(R.string.no_review));
+        holder.location.setText(requestService.getCurrentLocation());
         holder.time.setText(TimeUtils.convertLongToTime(context, "dd MMM yyyy, hh:mm a", requestService.getSubmitTime() != null ? requestService.getSubmitTime() : 0));
     }
 
@@ -57,7 +56,7 @@ public class ServicingHistoryAdapter extends RecyclerView.Adapter<ServicingHisto
 
     static class ServicingHistoryViewHolder extends RecyclerView.ViewHolder {
 
-        TextView service, requestedBy, garage, status, assignedTo, feedback, review, time;
+        TextView service, requestedBy, garage, status, assignedTo, feedback, review, location, time;
 
         public ServicingHistoryViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -68,6 +67,7 @@ public class ServicingHistoryAdapter extends RecyclerView.Adapter<ServicingHisto
             assignedTo = itemView.findViewById(R.id.tvAssignedTo);
             feedback = itemView.findViewById(R.id.tvFeedback);
             review = itemView.findViewById(R.id.tvReview);
+            location = itemView.findViewById(R.id.tvLocation);
             time = itemView.findViewById(R.id.tvTime);
         }
     }

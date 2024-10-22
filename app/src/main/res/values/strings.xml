@@ -162,4 +162,8 @@
     <string name="discount_percentage">40%\nDiscount</string>
     <string name="on_all_servicing">On All Servicing</string>
     <string name="company_name" translatable="false">Habibur Car Service</string>
+    <string name="location_colon">"Location: "</string>
+    <string name="current_location">Current Location</string>
+    <string name="current_location_hint">Your current location in details</string>
+    <string name="enter_current_location">Enter current location</string>
 </resources>

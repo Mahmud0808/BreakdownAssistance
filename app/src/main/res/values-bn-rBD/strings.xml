@@ -155,4 +155,8 @@
     <string name="make_admin">অ্যাডমিন\nবানান</string>
     <string name="discount_percentage">৪০%\nডিসকাউন্ট</string>
     <string name="on_all_servicing">সকল সার্ভিসিং এর উপর</string>
+    <string name="location_colon">"অবস্থান: "</string>
+    <string name="current_location">বর্তমান অবস্থান</string>
+    <string name="current_location_hint">আপনার বর্তমান অবস্থান বিস্তারিত লিখুন</string>
+    <string name="enter_current_location">বর্তমান অবস্থান লিখুন</string>
 </resources>
