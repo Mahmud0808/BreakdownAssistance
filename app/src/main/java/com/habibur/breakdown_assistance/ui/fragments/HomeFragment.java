@@ -59,12 +59,12 @@ public class HomeFragment extends BaseFragment {
                         if (documentSnapshot.exists()) {
                             user = documentSnapshot.toObject(UserModel.class);
                         } else {
-                            Log.e(HomeFragment.class.getSimpleName(), "User not found");
+                            Log.e(HomeFragment.class.getSimpleName(), getString(R.string.user_not_found));
                         }
                     })
                     .addOnFailureListener(e -> Log.e(HomeFragment.class.getSimpleName(), Objects.requireNonNull(e.getMessage())));
         } else {
-            Log.e(HomeFragment.class.getSimpleName(), "User not logged in");
+            Log.e(HomeFragment.class.getSimpleName(), getString(R.string.user_not_logged_in));
         }
     }
 
@@ -147,7 +147,7 @@ public class HomeFragment extends BaseFragment {
 
                 MainFragment.replaceFragment(fragment);
             } else {
-                Log.e(HomeFragment.class.getSimpleName(), "User not logged in");
+                Log.e(HomeFragment.class.getSimpleName(), getString(R.string.user_not_logged_in));
             }
         });
     }

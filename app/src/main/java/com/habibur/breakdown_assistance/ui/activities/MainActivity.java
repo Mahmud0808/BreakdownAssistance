@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
                 getSupportFragmentManager().beginTransaction().add(dummyMapFragment, "dummyMapFragment").commit();
 
                 dummyMapFragment.getMapAsync(googleMap -> {
-                    Log.d(MainActivity.class.getSimpleName(), "Dummy map is ready");
+                    Log.d(MainActivity.class.getSimpleName(), getString(R.string.dummy_map_is_ready));
                     latch.countDown();
                 });
             });

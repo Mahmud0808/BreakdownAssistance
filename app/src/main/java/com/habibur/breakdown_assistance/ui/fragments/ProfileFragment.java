@@ -63,7 +63,7 @@ public class ProfileFragment extends BaseFragment {
                                 binding.editTextVehicleModel.setText(currentUser.getVehicleModel());
                             }
                         } else {
-                            Log.e(ProfileFragment.class.getSimpleName(), "User not found");
+                            Log.e(ProfileFragment.class.getSimpleName(), getString(R.string.user_not_found));
                         }
                     });
 
@@ -75,22 +75,22 @@ public class ProfileFragment extends BaseFragment {
                 boolean error = false;
 
                 if (name.isEmpty()) {
-                    binding.editTextFullName.setError("Enter name");
+                    binding.editTextFullName.setError(getString(R.string.enter_name));
                     error = true;
                 }
 
                 if (phone.isEmpty() || !phone.matches("^[+]?[0-9]{11,13}$")) {
-                    binding.editTextPhoneNumber.setError("Enter valid phone number");
+                    binding.editTextPhoneNumber.setError(getString(R.string.enter_valid_phone_number));
                     error = true;
                 }
 
                 if (vehicleCompany.isEmpty()) {
-                    binding.editTextVehicleCompany.setError("Enter vehicle company");
+                    binding.editTextVehicleCompany.setError(getString(R.string.enter_vehicle_company));
                     error = true;
                 }
 
                 if (vehicleModel.isEmpty()) {
-                    binding.editTextVehicleModel.setError("Enter vehicle model");
+                    binding.editTextVehicleModel.setError(getString(R.string.enter_vehicle_model));
                     error = true;
                 }
 
@@ -104,7 +104,7 @@ public class ProfileFragment extends BaseFragment {
 
                 db.collection(USER_DATABASE).document(userId).set(userModel)
                         .addOnSuccessListener(aVoid -> {
-                            Toast.makeText(requireContext(), "Profile updated successfully", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(requireContext(), R.string.profile_updated_successfully, Toast.LENGTH_SHORT).show();
                         })
                         .addOnFailureListener(e -> {
                             Toast.makeText(requireContext(), "Profile update failed: " + e.getMessage(), Toast.LENGTH_LONG).show();

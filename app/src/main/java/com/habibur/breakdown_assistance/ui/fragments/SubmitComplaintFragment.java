@@ -36,12 +36,12 @@ public class SubmitComplaintFragment extends BaseFragment {
                 boolean error = false;
 
                 if (contactInfo.isEmpty()) {
-                    binding.editTextContactInfo.setError("Enter contact info");
+                    binding.editTextContactInfo.setError(getString(R.string.enter_contact_info));
                     error = true;
                 }
 
                 if (description.isEmpty()) {
-                    binding.editTextDescription.setError("Enter description");
+                    binding.editTextDescription.setError(getString(R.string.enter_description));
                     error = true;
                 }
 
@@ -60,10 +60,10 @@ public class SubmitComplaintFragment extends BaseFragment {
                             binding.editTextContactInfo.setText("");
                             binding.editTextDescription.setText("");
 
-                            Toast.makeText(v.getContext(), "Complaint submitted successfully", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(v.getContext(), R.string.complaint_submitted_successfully, Toast.LENGTH_SHORT).show();
                         })
                         .addOnFailureListener(e -> {
-                            Toast.makeText(v.getContext(), "Error submitted complaint: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(v.getContext(), "Error submitting complaint: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                         });
             });
         }

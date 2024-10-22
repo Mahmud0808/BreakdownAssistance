@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.habibur.breakdown_assistance.R;
 import com.habibur.breakdown_assistance.databinding.FragmentRegistrationBinding;
 import com.habibur.breakdown_assistance.ui.activities.MainActivity;
 import com.habibur.breakdown_assistance.utils.ViewUtils;
@@ -30,22 +31,22 @@ public class RegistrationFragment extends BaseFragment {
             boolean error = false;
 
             if (name.isEmpty()) {
-                binding.editTextFullName.setError("Enter name");
+                binding.editTextFullName.setError(getString(R.string.enter_name));
                 error = true;
             }
 
             if (phone.isEmpty() || !phone.matches("^[+]?[0-9]{11,13}$")) {
-                binding.editTextPhoneNumber.setError("Enter valid phone number");
+                binding.editTextPhoneNumber.setError(getString(R.string.enter_valid_phone_number));
                 error = true;
             }
 
             if (vehicleCompany.isEmpty()) {
-                binding.editTextVehicleCompany.setError("Enter vehicle company");
+                binding.editTextVehicleCompany.setError(getString(R.string.enter_vehicle_company));
                 error = true;
             }
 
             if (vehicleModel.isEmpty()) {
-                binding.editTextVehicleModel.setError("Enter vehicle model");
+                binding.editTextVehicleModel.setError(getString(R.string.enter_vehicle_model));
                 error = true;
             }
 
