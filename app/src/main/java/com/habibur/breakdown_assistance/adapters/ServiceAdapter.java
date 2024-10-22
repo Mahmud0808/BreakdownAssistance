@@ -91,12 +91,12 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceV
 
                                 MainFragment.replaceFragment(fragment);
                             } else {
-                                Log.e(ServiceAdapter.class.getSimpleName(), "User not found");
+                                Log.e(ServiceAdapter.class.getSimpleName(), context.getString(R.string.user_not_found));
                             }
                         })
                         .addOnFailureListener(e -> Log.e(ServiceAdapter.class.getSimpleName(), Objects.requireNonNull(e.getMessage())));
             } else {
-                Log.e(ServiceAdapter.class.getSimpleName(), "User not logged in");
+                Log.e(ServiceAdapter.class.getSimpleName(), context.getString(R.string.user_not_logged_in));
             }
         });
     }

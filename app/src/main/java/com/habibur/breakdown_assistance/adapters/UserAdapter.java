@@ -50,7 +50,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         holder.name.setText(user.getName());
         holder.phone.setText(user.getPhone());
 
-        String accountType = user.getAccountType() == AccountType.USER ? "User" : user.getAccountType() == AccountType.MECHANIC ? "Mechanic" : "Admin";
+        String accountType = (user.getAccountType() == AccountType.USER) ? context.getString(R.string.user) : ((user.getAccountType() == AccountType.MECHANIC) ? context.getString(R.string.mechanic) : context.getString(R.string.admin));
         holder.account.setText(accountType);
 
         holder.btnUser.setOnClickListener(v -> changeAccountType(user.getId(), AccountType.USER));
@@ -100,13 +100,13 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
                             firestore.collection(USER_DATABASE).document(userId).set(user);
 
                             if (userId.equals(FirebaseAuth.getInstance().getUid())) {
-                                Toast.makeText(context, "Logout and login again to see changes", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, R.string.logout_and_login_again_to_see_changes, Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(context, "Account type changed successfully", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, R.string.account_type_changed_successfully, Toast.LENGTH_SHORT).show();
                             }
                         }
                     } else {
-                        Log.e(UserAdapter.class.getSimpleName(), "User not found");
+                        Log.e(UserAdapter.class.getSimpleName(), context.getString(R.string.user_not_found));
                     }
                 })
                 .addOnFailureListener(e -> Log.e(UserAdapter.class.getSimpleName(), Objects.requireNonNull(e.getMessage())));

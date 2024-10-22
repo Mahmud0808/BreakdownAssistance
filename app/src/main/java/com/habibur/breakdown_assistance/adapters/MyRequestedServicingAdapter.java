@@ -52,11 +52,11 @@ public class MyRequestedServicingAdapter extends RecyclerView.Adapter<MyRequeste
         holder.garage.setText(requestService.getGarage().getName());
         holder.minimumPrice.setText("৳ " + requestService.getService().getMinimumPrice());
         holder.serviceCharge.setText("৳ " + requestService.getService().getServiceCharge());
-        holder.time.setText(TimeUtils.convertLongToTime("dd MMM yyyy, hh:mm a", requestService.getSubmitTime() != null ? requestService.getSubmitTime() : 0));
-        holder.additionalInfo.setText(requestService.getAdditionalInfo() != null ? requestService.getAdditionalInfo() : "No Additional Info");
+        holder.time.setText(TimeUtils.convertLongToTime(context, "dd MMM yyyy, hh:mm a", requestService.getSubmitTime() != null ? requestService.getSubmitTime() : 0));
+        holder.additionalInfo.setText(requestService.getAdditionalInfo() != null ? requestService.getAdditionalInfo() : context.getString(R.string.no_additional_info));
         holder.status.setText(requestService.getStatus().toString());
-        holder.feedback.setText(requestService.getFeedback() != null ? requestService.getFeedback() : "No Feedback");
-        holder.review.setText(requestService.getReview() != null ? requestService.getReview() : "No Review");
+        holder.feedback.setText(requestService.getFeedback() != null ? requestService.getFeedback() : context.getString(R.string.no_feedback));
+        holder.review.setText(requestService.getReview() != null ? requestService.getReview() : context.getString(R.string.no_review));
 
         if (requestService.getStatus() == RequestStatus.PENDING) {
             holder.layoutFeedback.setVisibility(View.GONE);
@@ -84,7 +84,7 @@ public class MyRequestedServicingAdapter extends RecyclerView.Adapter<MyRequeste
     @SuppressLint("NotifyDataSetChanged")
     private void submitReview(MyRequestedServicingViewHolder holder, RequestServiceModel requestService, String review) {
         if (review.trim().isEmpty()) {
-            Toast.makeText(context, "Please enter review", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, R.string.please_enter_review, Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -97,12 +97,12 @@ public class MyRequestedServicingAdapter extends RecyclerView.Adapter<MyRequeste
                     .document(requestService.getId())
                     .set(requestService);
 
-            Toast.makeText(context, "Review submitted successfully", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, R.string.review_submitted_successfully, Toast.LENGTH_SHORT).show();
 
             holder.editTextReview.setText("");
             holder.layoutSubmitReview.setVisibility(View.GONE);
         } else {
-            Log.e(ServiceAdapter.class.getSimpleName(), "User not logged in");
+            Log.e(ServiceAdapter.class.getSimpleName(), context.getString(R.string.user_not_logged_in));
         }
     }
 

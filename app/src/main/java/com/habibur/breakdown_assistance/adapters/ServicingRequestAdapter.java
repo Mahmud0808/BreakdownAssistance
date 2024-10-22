@@ -56,8 +56,8 @@ public class ServicingRequestAdapter extends RecyclerView.Adapter<ServicingReque
         holder.garage.setText(requestService.getGarage().getName());
         holder.minimumPrice.setText("৳ " + requestService.getService().getMinimumPrice());
         holder.serviceCharge.setText("৳ " + requestService.getService().getServiceCharge());
-        holder.time.setText(TimeUtils.convertLongToTime("dd MMM yyyy, hh:mm a", requestService.getSubmitTime() != null ? requestService.getSubmitTime() : 0));
-        holder.additionalInfo.setText(requestService.getAdditionalInfo() != null ? requestService.getAdditionalInfo() : "No Additional Info");
+        holder.time.setText(TimeUtils.convertLongToTime(context, "dd MMM yyyy, hh:mm a", requestService.getSubmitTime() != null ? requestService.getSubmitTime() : 0));
+        holder.additionalInfo.setText(requestService.getAdditionalInfo() != null ? requestService.getAdditionalInfo() : context.getString(R.string.no_additional_info));
 
         holder.btnAccept.setOnClickListener(v -> updateServiceStatus(requestService, RequestStatus.ACCEPTED, holder.editTextFeedback.getText().toString().trim()));
         holder.btnReject.setOnClickListener(v -> updateServiceStatus(requestService, RequestStatus.REJECTED, holder.editTextFeedback.getText().toString().trim()));
@@ -83,14 +83,14 @@ public class ServicingRequestAdapter extends RecyclerView.Adapter<ServicingReque
                                     .document(requestService.getId())
                                     .set(requestService);
 
-                            Toast.makeText(context, "Status updated successfully", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, R.string.status_updated_successfully, Toast.LENGTH_SHORT).show();
                         } else {
-                            Log.e(ServiceAdapter.class.getSimpleName(), "User not found");
+                            Log.e(ServiceAdapter.class.getSimpleName(), context.getString(R.string.user_not_found));
                         }
                     })
                     .addOnFailureListener(e -> Log.e(ServiceAdapter.class.getSimpleName(), Objects.requireNonNull(e.getMessage())));
         } else {
-            Log.e(ServiceAdapter.class.getSimpleName(), "User not logged in");
+            Log.e(ServiceAdapter.class.getSimpleName(), context.getString(R.string.user_not_logged_in));
         }
     }
 
