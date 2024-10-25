@@ -109,7 +109,7 @@
     <string name="submit_complaint">অভিযোগ জমা দিন</string>
     <string name="sign_up">সাইন আপ</string>
     <string name="continue_btn">চালিয়ে যান</string>
-    <string name="already_have_an_account">ইতিমধ্যে একটি অ্যাকাউন্ট আছে?</string>
+    <string name="already_have_an_account">ইতিমধ্যে অ্যাকাউন্ট আছে?</string>
     <string name="login">লগইন করুন</string>
     <string name="select_garage">গ্যারেজ নির্বাচন করুন</string>
     <string name="select_garage_hint">গ্যারেজ চয়ন করুন</string>
