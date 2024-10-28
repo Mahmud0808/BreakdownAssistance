@@ -209,7 +209,7 @@ public class OtpVerificationFragment extends Fragment {
             String vehicleCompany = getArguments().getString("vehicle_company");
             String vehicleModel = getArguments().getString("vehicle_model");
 
-            UserModel userModel = new UserModel(userId, name, phone, vehicleCompany, vehicleModel);
+            UserModel userModel = new UserModel(userId, name, phone, vehicleCompany, vehicleModel, null);
 
             FirebaseFirestore db = FirebaseFirestore.getInstance();
 
