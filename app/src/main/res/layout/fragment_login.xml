@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
+        android:animateLayoutChanges="true"
         android:gravity="center"
         android:orientation="vertical"
         android:paddingHorizontal="60dp">
@@ -20,60 +21,218 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="40dp"
             android:text="@string/log_in"
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold" />
 
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indeterminateOnly="true"
+            android:indeterminateTint="@color/black"
+            android:visibility="invisible" />
+
         <ImageView
             android:layout_width="260dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
             android:adjustViewBounds="true"
+            android:importantForAccessibility="no"
             android:src="@drawable/img_landing_mechanic" />
 
-        <TextView
-            android:id="@+id/textViewOtpDescription"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="40dp"
-            android:lineHeight="24sp"
-            android:text="@string/otp_description"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="15sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:alpha="0.6"
-            android:text="@string/enter_mobile_number"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
-
-        <EditText
-            android:id="@+id/editTextPhoneNumber"
+        <LinearLayout
+            android:id="@+id/linearLayoutPhoneLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/semi_transparent_black_bg"
-            android:hint="+880"
-            android:inputType="phone"
-            android:paddingHorizontal="18dp"
-            android:paddingVertical="12dp" />
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/btnLogin"
-            android:layout_width="180dp"
+            <TextView
+                android:id="@+id/textViewOtpDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="40dp"
+                android:lineHeight="24sp"
+                android:text="@string/otp_description"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="0.6"
+                android:text="@string/enter_mobile_number"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/editTextPhoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:autofillHints="phone"
+                android:background="@drawable/semi_transparent_black_bg"
+                android:hint="+880"
+                android:inputType="phone"
+                android:paddingHorizontal="18dp"
+                android:paddingVertical="12dp"
+                tools:ignore="HardcodedText" />
+
+            <Button
+                android:id="@+id/btn_get_otp"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="@color/white"
+                android:letterSpacing="0.04"
+                android:paddingVertical="14dp"
+                android:text="@string/get_otp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:cornerRadius="6dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/semi_transparent_black_bg" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="8dp"
+                    android:text="@string/try_another_way"
+                    android:textColor="@color/black"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/semi_transparent_black_bg" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/imageViewEmail"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/semi_transparent_circle"
+                android:importantForAccessibility="no"
+                android:padding="12dp"
+                android:src="@drawable/ic_email" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutEmailLogin"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="@color/white"
-            android:letterSpacing="0.04"
-            android:paddingVertical="14dp"
-            android:text="@string/get_otp"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            app:cornerRadius="6dp" />
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="0.6"
+                android:text="@string/enter_your_credentials"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/editTextEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:autofillHints="emailAddress"
+                android:background="@drawable/semi_transparent_black_bg"
+                android:hint="johndoe@gmail.com"
+                android:inputType="textEmailAddress"
+                android:paddingHorizontal="18dp"
+                android:paddingVertical="12dp"
+                tools:ignore="HardcodedText" />
+
+            <EditText
+                android:id="@+id/editTextPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:autofillHints="password"
+                android:background="@drawable/semi_transparent_black_bg"
+                android:hint="********"
+                android:inputType="textPassword"
+                android:paddingHorizontal="18dp"
+                android:paddingVertical="12dp"
+                tools:ignore="HardcodedText" />
+
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="@color/white"
+                android:letterSpacing="0.04"
+                android:paddingVertical="14dp"
+                android:text="@string/login"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:cornerRadius="6dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/semi_transparent_black_bg" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="8dp"
+                    android:text="@string/try_another_way"
+                    android:textColor="@color/black"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/semi_transparent_black_bg" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/imageViewPhone"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/semi_transparent_circle"
+                android:importantForAccessibility="no"
+                android:padding="12dp"
+                android:src="@drawable/ic_phone" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"

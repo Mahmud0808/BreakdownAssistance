@@ -132,6 +132,8 @@ public class OtpVerificationFragment extends Fragment {
             return;
         }
 
+        binding.progressBar.setVisibility(View.VISIBLE);
+
         PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationId, code);
         signInWithCredential(credential);
     }
@@ -150,6 +152,8 @@ public class OtpVerificationFragment extends Fragment {
                 }
             } else {
                 Toast.makeText(requireContext(), Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_LONG).show();
+
+                binding.progressBar.setVisibility(View.INVISIBLE);
             }
         });
     }
@@ -188,14 +192,20 @@ public class OtpVerificationFragment extends Fragment {
                     Prefs.putString("account_type", accountType);
 
                     MainActivity.replaceFragment(new MainFragment());
+
+                    binding.progressBar.setVisibility(View.INVISIBLE);
                 } else {
                     firebaseAuth.signOut();
                     Toast.makeText(requireContext(), R.string.you_don_t_have_an_account, Toast.LENGTH_SHORT).show();
+
+                    binding.progressBar.setVisibility(View.INVISIBLE);
                 }
             });
         } else {
             // Fallback case, user should not be null here
             Toast.makeText(requireContext(), R.string.unexpected_error_occurred, Toast.LENGTH_LONG).show();
+
+            binding.progressBar.setVisibility(View.INVISIBLE);
         }
     }
 
@@ -217,9 +227,13 @@ public class OtpVerificationFragment extends Fragment {
                     .addOnSuccessListener(aVoid -> {
                         Prefs.putString("account_type", "USER");
                         MainActivity.replaceFragment(new MainFragment());
+
+                        binding.progressBar.setVisibility(View.INVISIBLE);
                     })
                     .addOnFailureListener(e -> {
                         Toast.makeText(requireContext(), "Registration failed: " + e.getMessage(), Toast.LENGTH_LONG).show();
+
+                        binding.progressBar.setVisibility(View.INVISIBLE);
                     });
         }
     }

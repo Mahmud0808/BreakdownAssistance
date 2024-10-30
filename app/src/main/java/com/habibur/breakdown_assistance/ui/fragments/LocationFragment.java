@@ -79,7 +79,7 @@ public class LocationFragment extends BaseFragment {
     }
 
     private void askLocationPermission() {
-        binding.header.progress.setVisibility(View.VISIBLE);
+        binding.header.progressBar.setVisibility(View.VISIBLE);
         requestLocationPermission.launch(Manifest.permission.ACCESS_FINE_LOCATION);
     }
 
@@ -119,7 +119,7 @@ public class LocationFragment extends BaseFragment {
 
     private void updateMapLocation(Location location) {
         if (googleMap != null && location != null) {
-            binding.header.progress.setVisibility(View.GONE);
+            binding.header.progressBar.setVisibility(View.GONE);
 
             LatLng latlng = new LatLng(location.getLatitude(), location.getLongitude());
 

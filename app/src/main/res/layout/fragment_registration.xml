@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
+        android:animateLayoutChanges="true"
         android:gravity="center"
         android:orientation="vertical"
         android:paddingHorizontal="60dp">
@@ -20,16 +21,25 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="40dp"
             android:text="@string/sign_up"
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold" />
 
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indeterminateOnly="true"
+            android:indeterminateTint="@color/black"
+            android:visibility="invisible" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
+            android:layout_marginTop="40dp"
             android:alpha="0.6"
             android:text="@string/full_name"
             android:textColor="@color/black"
@@ -40,32 +50,122 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:autofillHints="name"
             android:background="@drawable/semi_transparent_black_bg"
             android:hint="@string/full_name_hint"
             android:inputType="textPersonName"
             android:paddingHorizontal="18dp"
             android:paddingVertical="12dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_marginTop="16dp"
-            android:alpha="0.6"
-            android:text="@string/phone_number"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
-
-        <EditText
-            android:id="@+id/editTextPhoneNumber"
+        <LinearLayout
+            android:id="@+id/linearLayoutPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/semi_transparent_black_bg"
-            android:hint="@string/phone_number_hint"
-            android:inputType="phone"
-            android:paddingHorizontal="18dp"
-            android:paddingVertical="12dp" />
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginTop="16dp"
+                android:alpha="0.6"
+                android:text="@string/phone_number"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/editTextPhoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:autofillHints="phone"
+                android:background="@drawable/semi_transparent_black_bg"
+                android:hint="@string/phone_number_hint"
+                android:inputType="phone"
+                android:paddingHorizontal="18dp"
+                android:paddingVertical="12dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginTop="16dp"
+                android:alpha="0.6"
+                android:text="@string/email_address"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/editTextEmailAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:autofillHints="emailAddress"
+                android:background="@drawable/semi_transparent_black_bg"
+                android:hint="johndoe@gmail.com"
+                android:inputType="textEmailAddress"
+                android:paddingHorizontal="18dp"
+                android:paddingVertical="12dp"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginTop="16dp"
+                android:alpha="0.6"
+                android:text="@string/password"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/editTextPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:autofillHints="password"
+                android:background="@drawable/semi_transparent_black_bg"
+                android:hint="********"
+                android:inputType="textPassword"
+                android:paddingHorizontal="18dp"
+                android:paddingVertical="12dp"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginTop="16dp"
+                android:alpha="0.6"
+                android:text="@string/repeat_password"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/editTextRepeatPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:autofillHints="password"
+                android:background="@drawable/semi_transparent_black_bg"
+                android:hint="********"
+                android:inputType="textPassword"
+                android:paddingHorizontal="18dp"
+                android:paddingVertical="12dp"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
@@ -84,6 +184,7 @@
             android:layout_marginTop="8dp"
             android:background="@drawable/semi_transparent_black_bg"
             android:hint="@string/vehicle_company_hint"
+            android:importantForAutofill="no"
             android:inputType="text"
             android:paddingHorizontal="18dp"
             android:paddingVertical="12dp" />
@@ -105,6 +206,7 @@
             android:layout_marginTop="8dp"
             android:background="@drawable/semi_transparent_black_bg"
             android:hint="@string/vehicle_model_hint"
+            android:importantForAutofill="no"
             android:inputType="text"
             android:paddingHorizontal="18dp"
             android:paddingVertical="12dp" />
@@ -121,6 +223,57 @@
             android:textColor="@color/black"
             android:textSize="16sp"
             app:cornerRadius="6dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_weight="1"
+                android:background="@drawable/semi_transparent_black_bg" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:text="@string/try_another_way"
+                android:textColor="@color/black"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_weight="1"
+                android:background="@drawable/semi_transparent_black_bg" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageViewEmail"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/semi_transparent_circle"
+            android:importantForAccessibility="no"
+            android:padding="12dp"
+            android:src="@drawable/ic_email" />
+
+        <ImageView
+            android:id="@+id/imageViewPhone"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/semi_transparent_circle"
+            android:importantForAccessibility="no"
+            android:padding="12dp"
+            android:src="@drawable/ic_phone"
+            android:visibility="gone" />
 
         <LinearLayout
             android:layout_width="wrap_content"

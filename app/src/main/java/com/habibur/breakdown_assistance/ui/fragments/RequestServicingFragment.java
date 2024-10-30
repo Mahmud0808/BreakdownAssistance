@@ -1,5 +1,6 @@
 package com.habibur.breakdown_assistance.ui.fragments;
 
+import static com.habibur.breakdown_assistance.BreakdownAssistance.getAppContext;
 import static com.habibur.breakdown_assistance.config.Constants.GARAGES_DATABASE;
 import static com.habibur.breakdown_assistance.config.Constants.REQUESTED_SERVICES_DATABASE;
 
@@ -54,7 +55,7 @@ public class RequestServicingFragment extends BaseFragment {
             if (serviceModel != null && userModel != null) {
                 checkRequestAlreadyExists(userModel, serviceModel);
 
-                Glide.with(requireContext())
+                Glide.with(getAppContext())
                         .asBitmap()
                         .centerCrop()
                         .placeholder(R.drawable.img_loading)

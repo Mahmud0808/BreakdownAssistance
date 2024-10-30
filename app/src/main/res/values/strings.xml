@@ -166,4 +166,14 @@
     <string name="current_location">Current Location</string>
     <string name="current_location_hint">Your current location in details</string>
     <string name="enter_current_location">Enter current location</string>
+    <string name="try_another_way">Try Another Way</string>
+    <string name="enter_your_credentials">Enter Your Credentials</string>
+    <string name="enter_valid_email">Enter valid email address</string>
+    <string name="enter_password">Enter password</string>
+    <string name="password_length">Password must be atl east 8 characters long</string>
+    <string name="email_address">Email Address</string>
+    <string name="password">Password</string>
+    <string name="repeat_password">Repeat Password</string>
+    <string name="password_mismatch">Password does not match</string>
+    <string name="registration_successful">Registration successful</string>
 </resources>
