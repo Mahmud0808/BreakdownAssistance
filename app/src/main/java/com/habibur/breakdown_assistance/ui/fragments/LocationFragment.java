@@ -1,5 +1,6 @@
 package com.habibur.breakdown_assistance.ui.fragments;
 
+import static com.habibur.breakdown_assistance.BreakdownAssistance.getAppContext;
 import static com.habibur.breakdown_assistance.config.Constants.GARAGES_DATABASE;
 
 import android.Manifest;
@@ -165,8 +166,8 @@ public class LocationFragment extends BaseFragment {
         if (googleMap != null) {
             for (GarageModel garage : garageModels) {
                 LatLng latLng = new LatLng(garage.getLatitude(), garage.getLongitude());
-                Bitmap bitmap = DrawableUtils.drawableToBitmap(requireContext(), R.drawable.ic_garage_marker);
-                bitmap = DrawableUtils.tintBitmap(bitmap, requireContext().getColor(R.color.dark_purple));
+                Bitmap bitmap = DrawableUtils.drawableToBitmap(getAppContext(), R.drawable.ic_garage_marker);
+                bitmap = DrawableUtils.tintBitmap(bitmap, getAppContext().getColor(R.color.dark_purple));
                 MarkerOptions markerOptions = new MarkerOptions()
                         .position(latLng)
                         .title(garage.getName())
