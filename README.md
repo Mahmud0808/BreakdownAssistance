@@ -1,3 +1,5 @@
+<img src="https://i.ibb.co.com/B41s2Zh/breakdown-assistance-banner.png" alt="Banner" />
+
 # 🚗 Breakdown Assistance
 
 Breakdown Assistance is a versatile Android application designed to provide vehicle servicing support with dual language support (English and Bengali). The app allows users to request vehicle services, mechanics to manage service requests, and admins to oversee operations. Built with Java and powered by Firebase, this app ensures seamless authentication, data management, and storage.
