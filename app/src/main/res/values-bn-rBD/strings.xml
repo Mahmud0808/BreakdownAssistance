@@ -169,4 +169,6 @@
     <string name="repeat_password">পাসওয়ার্ড পুনরাবৃত্তি</string>
     <string name="password_mismatch">পাসওয়ার্ড মিলছে না</string>
     <string name="registration_successful">নিবন্ধন সফল হয়েছে</string>
+    <string name="forgot_password">পাসওয়ার্ড ভুলে গেছেন?</string>
+    <string name="password_reset_email_sent">আপনার ইমেল ঠিকানায় পাসওয়ার্ড রিসেট ইমেল পাঠানো হয়েছে</string>
 </resources>

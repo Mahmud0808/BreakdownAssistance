@@ -176,4 +176,6 @@
     <string name="repeat_password">Repeat Password</string>
     <string name="password_mismatch">Password does not match</string>
     <string name="registration_successful">Registration successful</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="password_reset_email_sent">Password reset email sent to your email address</string>
 </resources>
