@@ -54,10 +54,10 @@ public class MyRequestedServicingAdapter extends RecyclerView.Adapter<MyRequeste
         holder.serviceCharge.setText("৳ " + requestService.getService().getServiceCharge());
         holder.location.setText(requestService.getCurrentLocation());
         holder.time.setText(TimeUtils.convertLongToTime(context, "dd MMM yyyy, hh:mm a", requestService.getSubmitTime() != null ? requestService.getSubmitTime() : 0));
-        holder.additionalInfo.setText(requestService.getAdditionalInfo() != null ? requestService.getAdditionalInfo() : context.getString(R.string.no_additional_info));
+        holder.additionalInfo.setText(requestService.getAdditionalInfo() != null && !requestService.getAdditionalInfo().trim().isEmpty() ? requestService.getAdditionalInfo() : context.getString(R.string.no_additional_info));
         holder.status.setText(requestService.getStatus().toString());
-        holder.feedback.setText(requestService.getFeedback() != null ? requestService.getFeedback() : context.getString(R.string.no_feedback));
-        holder.review.setText(requestService.getReview() != null ? requestService.getReview() : context.getString(R.string.no_review));
+        holder.feedback.setText(requestService.getFeedback() != null && !requestService.getFeedback().trim().isEmpty() ? requestService.getFeedback() : context.getString(R.string.no_feedback));
+        holder.review.setText(requestService.getReview() != null && !requestService.getReview().trim().isEmpty() ? requestService.getReview() : context.getString(R.string.no_review));
 
         if (requestService.getStatus() == RequestStatus.PENDING) {
             holder.layoutFeedback.setVisibility(View.GONE);
