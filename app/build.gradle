@@ -47,4 +47,6 @@ dependencies {
     implementation libs.firebase.firestore
     implementation libs.glide
     implementation libs.firebase.storage
+    implementation libs.gson
+    implementation(files("libs/sslCommerzSdk.aar"))
 }
