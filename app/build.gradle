@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace 'com.habibur.breakdown_assistance'
-    compileSdk 34
+    compileSdk 35
 
     defaultConfig {
         applicationId "com.habibur.breakdown_assistance"
@@ -49,4 +49,5 @@ dependencies {
     implementation libs.firebase.storage
     implementation libs.gson
     implementation(files("libs/sslCommerzSdk.aar"))
+    implementation libs.recyclerview
 }

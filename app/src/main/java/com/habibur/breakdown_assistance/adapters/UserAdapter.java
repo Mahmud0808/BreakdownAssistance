@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.button.MaterialButton;
@@ -36,16 +35,16 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         this.userList = userList;
     }
 
-    @NonNull
+
     @Override
-    public UserViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public UserViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_user_list, parent, false);
         return new UserViewHolder(view);
     }
 
     @SuppressLint("SetTextI18n")
     @Override
-    public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
+    public void onBindViewHolder(UserViewHolder holder, int position) {
         UserModel user = userList.get(position);
 
         holder.name.setText(user.getName());
@@ -67,7 +66,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
 
             holder.btnAdmin.setEnabled(true);
             holder.btnAdmin.setAlpha(1f);
-        } else if (user.getAccountType() == AccountType.MECHANIC) {
+        }
+        else if (user.getAccountType() == AccountType.MECHANIC) {
             holder.btnMechanic.setEnabled(false);
             holder.btnMechanic.setAlpha(0.6f);
 
@@ -76,7 +76,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
 
             holder.btnAdmin.setEnabled(true);
             holder.btnAdmin.setAlpha(1f);
-        } else if (user.getAccountType() == AccountType.ADMIN) {
+        }
+        else if (user.getAccountType() == AccountType.ADMIN) {
             holder.btnAdmin.setEnabled(false);
             holder.btnAdmin.setAlpha(0.6f);
 
@@ -123,7 +124,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         TextView name, phone, account;
         MaterialButton btnUser, btnMechanic, btnAdmin;
 
-        public UserViewHolder(@NonNull View itemView) {
+        public UserViewHolder(View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.tvName);
             phone = itemView.findViewById(R.id.tvPhone);

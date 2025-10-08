@@ -9,6 +9,6 @@ public class Constants {
     public static final String COMPLAINTS_DATABASE = "complaints_list";
 
     // SSLCommerz
-    public static final String SSLCOMMERZ_STORE_ID = "YOUR_STORE_ID";
-    public static final String SSLCOMMERZ_STORE_PASSWORD = "YOUR_STORE_PASSWORD";
+    public static final String SSLCOMMERZ_STORE_ID = "break6777ad9c2adbe";
+    public static final String SSLCOMMERZ_STORE_PASSWORD = "break6777ad9c2adbe@ssl";
 }
