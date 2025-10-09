@@ -52,6 +52,7 @@ public class MyRequestedServicingAdapter extends RecyclerView.Adapter<MyRequeste
         holder.garage.setText(requestService.getGarage().getName());
         holder.minimumPrice.setText("৳ " + requestService.getService().getMinimumPrice());
         holder.serviceCharge.setText("৳ " + requestService.getService().getServiceCharge());
+        holder.location.setText(requestService.getCurrentLocation());
         holder.time.setText(TimeUtils.convertLongToTime(context, "dd MMM yyyy, hh:mm a", requestService.getSubmitTime() != null ? requestService.getSubmitTime() : 0));
         holder.additionalInfo.setText(requestService.getAdditionalInfo() != null ? requestService.getAdditionalInfo() : context.getString(R.string.no_additional_info));
         holder.status.setText(requestService.getStatus().toString());
@@ -113,7 +114,7 @@ public class MyRequestedServicingAdapter extends RecyclerView.Adapter<MyRequeste
 
     static class MyRequestedServicingViewHolder extends RecyclerView.ViewHolder {
 
-        TextView service, garage, minimumPrice, serviceCharge, time, additionalInfo, status, feedback, review;
+        TextView service, garage, minimumPrice, serviceCharge, location, time, additionalInfo, status, feedback, review;
         EditText editTextReview;
         MaterialButton btnSubmit;
         ViewGroup layoutFeedback, layoutReview, layoutSubmitReview;
@@ -124,6 +125,7 @@ public class MyRequestedServicingAdapter extends RecyclerView.Adapter<MyRequeste
             garage = itemView.findViewById(R.id.tvGarage);
             minimumPrice = itemView.findViewById(R.id.tvMinimumPrice);
             serviceCharge = itemView.findViewById(R.id.tvServiceCharge);
+            location = itemView.findViewById(R.id.tvLocation);
             time = itemView.findViewById(R.id.tvTime);
             additionalInfo = itemView.findViewById(R.id.tvAdditionalInfo);
             status = itemView.findViewById(R.id.tvStatus);

@@ -24,7 +24,7 @@
         android:paddingTop="24dp"
         android:paddingBottom="6dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:listitem="@layout/item_servicing_request_list" />
+        tools:listitem="@layout/item_my_requested_servicing_list" />
 
     <include
         android:id="@+id/header"

@@ -5,6 +5,7 @@ public class RequestServiceModel {
     private String id;
     private UserModel requestedBy;
     private ServiceModel service;
+    private String currentLocation;
     private GarageModel garage;
     private String additionalInfo;
     private RequestStatus status;
@@ -16,10 +17,11 @@ public class RequestServiceModel {
     public RequestServiceModel() {
     }
 
-    public RequestServiceModel(String id, UserModel requestedBy, ServiceModel service, GarageModel garage, String additionalInfo, RequestStatus status, UserModel assignedTo, String feedback, String review) {
+    public RequestServiceModel(String id, UserModel requestedBy, ServiceModel service, String currentLocation, GarageModel garage, String additionalInfo, RequestStatus status, UserModel assignedTo, String feedback, String review) {
         this.id = id;
         this.requestedBy = requestedBy;
         this.service = service;
+        this.currentLocation = currentLocation;
         this.garage = garage;
         this.additionalInfo = additionalInfo;
         this.status = status;
@@ -51,6 +53,14 @@ public class RequestServiceModel {
 
     public void setService(ServiceModel service) {
         this.service = service;
+    }
+
+    public String getCurrentLocation() {
+        return currentLocation;
+    }
+
+    public void setCurrentLocation(String currentLocation) {
+        this.currentLocation = currentLocation;
     }
 
     public GarageModel getGarage() {

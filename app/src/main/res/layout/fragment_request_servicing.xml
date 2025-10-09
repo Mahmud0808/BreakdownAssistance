@@ -175,6 +175,27 @@
                 android:layout_gravity="start"
                 android:layout_marginTop="16dp"
                 android:alpha="0.6"
+                android:text="@string/current_location"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/editTextCurrentLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/semi_transparent_black_bg"
+                android:hint="@string/current_location_hint"
+                android:inputType="text"
+                android:paddingHorizontal="18dp"
+                android:paddingVertical="12dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginTop="16dp"
+                android:alpha="0.6"
                 android:text="@string/vehicle_company"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
