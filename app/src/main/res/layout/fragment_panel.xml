@@ -29,7 +29,7 @@
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cardAddGarage"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginEnd="16dp"
                     android:layout_weight="1"
                     app:cardBackgroundColor="@color/light_accent"
@@ -64,7 +64,7 @@
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cardAddService"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     app:cardBackgroundColor="@color/light_accent"
                     app:cardCornerRadius="18dp"
@@ -107,7 +107,7 @@
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cardViewUsers"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginEnd="16dp"
                     android:layout_weight="1"
                     app:cardBackgroundColor="@color/light_accent"
@@ -142,7 +142,7 @@
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cardViewComplaints"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     app:cardBackgroundColor="@color/light_accent"
                     app:cardCornerRadius="18dp"
@@ -185,7 +185,7 @@
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cardServiceRequest"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginEnd="16dp"
                     android:layout_weight="1"
                     app:cardBackgroundColor="@color/light_accent"
@@ -220,7 +220,7 @@
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cardViewHistory"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     app:cardBackgroundColor="@color/light_accent"
                     app:cardCornerRadius="18dp"
