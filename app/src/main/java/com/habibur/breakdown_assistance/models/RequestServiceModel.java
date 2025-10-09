@@ -1,6 +1,6 @@
 package com.habibur.breakdown_assistance.models;
 
-public class RequestModel {
+public class RequestServiceModel {
 
     private String id;
     private UserModel requestedBy;
@@ -11,11 +11,12 @@ public class RequestModel {
     private UserModel assignedTo;
     private String feedback;
     private String review;
+    private Long submitTime;
 
-    public RequestModel() {
+    public RequestServiceModel() {
     }
 
-    public RequestModel(String id, UserModel requestedBy, ServiceModel service, GarageModel garage, String additionalInfo, RequestStatus status, UserModel assignedTo, String feedback, String review) {
+    public RequestServiceModel(String id, UserModel requestedBy, ServiceModel service, GarageModel garage, String additionalInfo, RequestStatus status, UserModel assignedTo, String feedback, String review) {
         this.id = id;
         this.requestedBy = requestedBy;
         this.service = service;
@@ -25,6 +26,7 @@ public class RequestModel {
         this.assignedTo = assignedTo;
         this.feedback = feedback;
         this.review = review;
+        this.submitTime = System.currentTimeMillis();
     }
 
     public String getId() {
@@ -97,5 +99,9 @@ public class RequestModel {
 
     public void setReview(String review) {
         this.review = review;
+    }
+
+    public Long getSubmitTime() {
+        return submitTime;
     }
 }
