@@ -19,7 +19,7 @@ public class ServicesFragment extends BaseFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentServicesBinding.inflate(inflater, container, false);
 
-        ViewUtils.setToolbarTitle(requireContext(), binding.header.toolbar, R.string.location, true);
+        ViewUtils.setToolbarTitle(requireContext(), binding.header.toolbar, R.string.services, true);
 
         return binding.getRoot();
     }
