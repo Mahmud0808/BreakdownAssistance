@@ -95,7 +95,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/accent"
-                android:text="Make\nUser" />
+                android:text="Make\nUser"
+                app:cornerRadius="8dp" />
 
             <View
                 android:layout_width="0dp"
@@ -107,7 +108,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/accent"
-                android:text="Make\nMechanic" />
+                android:text="Make\nMechanic"
+                app:cornerRadius="8dp" />
 
             <View
                 android:layout_width="0dp"
@@ -119,7 +121,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/accent"
-                android:text="Make\nAdmin" />
+                android:text="Make\nAdmin"
+                app:cornerRadius="8dp" />
 
         </LinearLayout>
     </LinearLayout>
