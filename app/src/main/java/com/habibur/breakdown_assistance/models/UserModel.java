@@ -1,6 +1,8 @@
 package com.habibur.breakdown_assistance.models;
 
-public class UserModel {
+import java.io.Serializable;
+
+public class UserModel implements Serializable {
 
     private String id;
     private String name;

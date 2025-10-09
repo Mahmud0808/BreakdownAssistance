@@ -1,6 +1,10 @@
 package com.habibur.breakdown_assistance.models;
 
-public class ServiceModel {
+import android.os.Parcel;
+
+import java.io.Serializable;
+
+public class ServiceModel implements Serializable {
 
     private String id;
     private String image;
@@ -21,6 +25,16 @@ public class ServiceModel {
         this.minimumPrice = minimumPrice;
         this.serviceCharge = serviceCharge;
         this.durationHours = durationHours;
+    }
+
+    protected ServiceModel(Parcel in) {
+        id = in.readString();
+        image = in.readString();
+        title = in.readString();
+        description = in.readString();
+        minimumPrice = in.readInt();
+        serviceCharge = in.readInt();
+        durationHours = in.readInt();
     }
 
     public String getId() {
