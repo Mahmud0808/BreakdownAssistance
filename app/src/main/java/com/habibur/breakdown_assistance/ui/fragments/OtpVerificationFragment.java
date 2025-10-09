@@ -121,6 +121,11 @@ public class OtpVerificationFragment extends Fragment {
     }
 
     private void verifyCode(String code) {
+        if (verificationId.isEmpty()) {
+            Toast.makeText(requireContext(), "Unexpected error occurred.", Toast.LENGTH_LONG).show();
+            return;
+        }
+
         PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationId, code);
         signInWithCredential(credential);
     }
