@@ -3,24 +3,28 @@ package com.habibur.breakdown_assistance.models;
 public class RequestModel {
 
     private String id;
-    private UserModel user;
+    private UserModel requestedBy;
     private ServiceModel service;
     private GarageModel garage;
     private String additionalInfo;
     private RequestStatus status;
+    private UserModel assignedTo;
     private String feedback;
+    private String review;
 
     public RequestModel() {
     }
 
-    public RequestModel(String id, UserModel user, ServiceModel service, GarageModel garage, String additionalInfo, RequestStatus status, String feedback) {
+    public RequestModel(String id, UserModel requestedBy, ServiceModel service, GarageModel garage, String additionalInfo, RequestStatus status, UserModel assignedTo, String feedback, String review) {
         this.id = id;
-        this.user = user;
+        this.requestedBy = requestedBy;
         this.service = service;
         this.garage = garage;
         this.additionalInfo = additionalInfo;
         this.status = status;
+        this.assignedTo = assignedTo;
         this.feedback = feedback;
+        this.review = review;
     }
 
     public String getId() {
@@ -31,12 +35,12 @@ public class RequestModel {
         this.id = id;
     }
 
-    public UserModel getUser() {
-        return user;
+    public UserModel getRequestedBy() {
+        return requestedBy;
     }
 
-    public void setUser(UserModel user) {
-        this.user = user;
+    public void setRequestedBy(UserModel requestedBy) {
+        this.requestedBy = requestedBy;
     }
 
     public ServiceModel getService() {
@@ -71,11 +75,27 @@ public class RequestModel {
         this.status = status;
     }
 
+    public UserModel getAssignedTo() {
+        return assignedTo;
+    }
+
+    public void setAssignedTo(UserModel assignedTo) {
+        this.assignedTo = assignedTo;
+    }
+
     public String getFeedback() {
         return feedback;
     }
 
     public void setFeedback(String feedback) {
         this.feedback = feedback;
+    }
+
+    public String getReview() {
+        return review;
+    }
+
+    public void setReview(String review) {
+        this.review = review;
     }
 }
