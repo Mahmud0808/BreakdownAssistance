@@ -4,7 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.UsersFragment">
+    tools:context=".ui.fragments.UserComplaintsFragment">
+
+    <TextView
+        android:id="@+id/noComplaintFound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="No complaint found"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
@@ -14,7 +24,7 @@
         android:paddingTop="24dp"
         android:paddingBottom="6dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:listitem="@layout/item_user_list" />
+        tools:listitem="@layout/item_user_complaint_list" />
 
     <include
         android:id="@+id/header"

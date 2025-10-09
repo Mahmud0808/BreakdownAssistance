@@ -32,6 +32,7 @@ public class PanelFragment extends BaseFragment {
         binding.cardViewUsers.setOnClickListener(v -> MainFragment.replaceFragment(new UsersFragment()));
 
         binding.cardViewComplaints.setVisibility(Prefs.isAdmin() ? View.VISIBLE : View.GONE);
+        binding.cardViewComplaints.setOnClickListener(v -> MainFragment.replaceFragment(new UserComplaintsFragment()));
 
         binding.cardServiceRequest.setVisibility(Prefs.isMechanic() ? View.VISIBLE : View.GONE);
         binding.cardServiceRequest.setOnClickListener(v -> MainFragment.replaceFragment(new ServicingRequestsFragment()));
