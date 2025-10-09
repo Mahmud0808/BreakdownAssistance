@@ -3,6 +3,8 @@ package com.habibur.breakdown_assistance.ui.fragments;
 import static com.habibur.breakdown_assistance.BreakdownAssistance.getAppContext;
 import static com.habibur.breakdown_assistance.config.Constants.GARAGES_DATABASE;
 import static com.habibur.breakdown_assistance.config.Constants.REQUESTED_SERVICES_DATABASE;
+import static com.habibur.breakdown_assistance.config.Constants.SSLCOMMERZ_STORE_ID;
+import static com.habibur.breakdown_assistance.config.Constants.SSLCOMMERZ_STORE_PASSWORD;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -27,16 +29,25 @@ import com.habibur.breakdown_assistance.models.RequestStatus;
 import com.habibur.breakdown_assistance.models.ServiceModel;
 import com.habibur.breakdown_assistance.models.UserModel;
 import com.habibur.breakdown_assistance.utils.ViewUtils;
+import com.sslwireless.sslcommerzlibrary.model.initializer.SSLCAdditionalInitializer;
+import com.sslwireless.sslcommerzlibrary.model.initializer.SSLCommerzInitialization;
+import com.sslwireless.sslcommerzlibrary.model.response.SSLCTransactionInfoModel;
+import com.sslwireless.sslcommerzlibrary.model.util.SSLCCurrencyType;
+import com.sslwireless.sslcommerzlibrary.model.util.SSLCSdkType;
+import com.sslwireless.sslcommerzlibrary.view.singleton.IntegrateSSLCommerz;
+import com.sslwireless.sslcommerzlibrary.viewmodel.listener.SSLCTransactionResponseListener;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
-public class RequestServicingFragment extends BaseFragment {
+public class RequestServicingFragment extends BaseFragment implements SSLCTransactionResponseListener {
 
     private FragmentRequestServicingBinding binding;
     private GarageModel selectedGarage;
+    private RequestServiceModel requestServiceModel;
+    private final String requestId = UUID.randomUUID().toString();
     private final FirebaseFirestore firestore = FirebaseFirestore.getInstance();
 
     @SuppressLint("SetTextI18n")
@@ -74,6 +85,9 @@ public class RequestServicingFragment extends BaseFragment {
                 binding.editTextDuration.setText(serviceModel.getDurationHours() + " Hour" + (serviceModel.getDurationHours() > 1 ? "s" : ""));
 
                 binding.btnSubmit.setOnClickListener(v -> {
+                    binding.btnSubmit.setAlpha(0.6f);
+                    v.setEnabled(false);
+
                     String currentLocation = binding.editTextCurrentLocation.getText().toString().trim();
                     String vehicleCompany = binding.editTextVehicleCompany.getText().toString().trim();
                     String vehicleModel = binding.editTextVehicleModel.getText().toString().trim();
@@ -104,26 +118,25 @@ public class RequestServicingFragment extends BaseFragment {
                     }
 
                     if (error) {
+                        binding.btnSubmit.setAlpha(1f);
+                        v.setEnabled(true);
                         return;
                     }
 
-                    String requestId = UUID.randomUUID().toString();
+                    requestServiceModel = new RequestServiceModel(
+                            requestId,
+                            userModel,
+                            serviceModel,
+                            currentLocation,
+                            selectedGarage,
+                            additionalInfo,
+                            RequestStatus.PENDING,
+                            null,
+                            null,
+                            null
+                    );
 
-                    RequestServiceModel requestServiceModel = new RequestServiceModel(requestId, userModel, serviceModel, currentLocation, selectedGarage, additionalInfo, RequestStatus.PENDING, null, null, null);
-
-                    FirebaseFirestore firestore = FirebaseFirestore.getInstance();
-                    firestore.collection(REQUESTED_SERVICES_DATABASE).document(requestId)
-                            .set(requestServiceModel)
-                            .addOnSuccessListener(aVoid -> {
-                                if (getActivity() != null) {
-                                    getActivity().onBackPressed();
-                                }
-
-                                Toast.makeText(v.getContext(), R.string.request_submitted, Toast.LENGTH_SHORT).show();
-                            })
-                            .addOnFailureListener(e -> {
-                                Toast.makeText(v.getContext(), "Error submitting request: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                            });
+                    startPaymentGateway(serviceModel.getTitle(), serviceModel.getServiceCharge());
                 });
             }
         }
@@ -208,5 +221,69 @@ public class RequestServicingFragment extends BaseFragment {
                         Log.d(RequestServicingFragment.class.getSimpleName(), "Error checking request: ", task.getException());
                     }
                 });
+    }
+
+    private void startPaymentGateway(String serviceType, int amount) {
+        SSLCommerzInitialization sslCommerzInitialization = new SSLCommerzInitialization(
+                SSLCOMMERZ_STORE_ID,
+                SSLCOMMERZ_STORE_PASSWORD,
+                amount,
+                SSLCCurrencyType.BDT,
+                requestId,
+                serviceType,
+                SSLCSdkType.TESTBOX
+        );
+
+        SSLCAdditionalInitializer sslcAdditionalInitializer = new SSLCAdditionalInitializer();
+        sslcAdditionalInitializer.setValueA("");
+        sslcAdditionalInitializer.setValueB("");
+        sslcAdditionalInitializer.setValueC("");
+        sslcAdditionalInitializer.setValueD("");
+
+        IntegrateSSLCommerz.getInstance(requireContext())
+                .addSSLCommerzInitialization(sslCommerzInitialization)
+                .addAdditionalInitializer(sslcAdditionalInitializer)
+                .buildApiCall(this);
+    }
+
+    @SuppressWarnings("deprecation")
+    private void addRequestToDatabase(String requestId, RequestServiceModel requestServiceModel) {
+        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+        firestore.collection(REQUESTED_SERVICES_DATABASE).document(requestId)
+                .set(requestServiceModel)
+                .addOnSuccessListener(aVoid -> {
+                    binding.btnSubmit.setAlpha(1f);
+                    binding.btnSubmit.setEnabled(true);
+
+                    if (getActivity() != null) {
+                        getActivity().onBackPressed();
+                    }
+
+                    Toast.makeText(requireContext(), R.string.request_submitted, Toast.LENGTH_SHORT).show();
+                })
+                .addOnFailureListener(e -> {
+                    binding.btnSubmit.setAlpha(1f);
+                    binding.btnSubmit.setEnabled(true);
+                    Toast.makeText(requireContext(), "Error submitting request: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                });
+    }
+
+    @Override
+    public void transactionSuccess(SSLCTransactionInfoModel sslcTransactionInfoModel) {
+        addRequestToDatabase(requestId, requestServiceModel);
+    }
+
+    @Override
+    public void transactionFail(String s) {
+        binding.btnSubmit.setAlpha(1f);
+        binding.btnSubmit.setEnabled(true);
+        Toast.makeText(requireContext(), "Error submitting request: " + s, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void closed(String s) {
+        binding.btnSubmit.setAlpha(1f);
+        binding.btnSubmit.setEnabled(true);
+        Toast.makeText(requireContext(), "Payment cancelled", Toast.LENGTH_SHORT).show();
     }
 }
