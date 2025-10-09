@@ -4,4 +4,10 @@
         <item>en-US</item>
         <item>bn-BD</item>
     </string-array>
+    <string-array name="user_filter_options">
+        <item>All</item>
+        <item>User</item>
+        <item>Mechanic</item>
+        <item>Admin</item>
+    </string-array>
 </resources>

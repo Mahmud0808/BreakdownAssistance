@@ -21,6 +21,7 @@ import com.habibur.breakdown_assistance.R;
 import com.habibur.breakdown_assistance.models.AccountType;
 import com.habibur.breakdown_assistance.models.UserModel;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -131,5 +132,22 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
             btnMechanic = itemView.findViewById(R.id.btnMakeMechanic);
             btnAdmin = itemView.findViewById(R.id.btnMakeAdmin);
         }
+    }
+
+    public void filterList(AccountType accountType, List<UserModel> userList) {
+        List<UserModel> filteredList = new ArrayList<>();
+        for (UserModel user : userList) {
+            if (accountType == null || user.getAccountType() == accountType) {
+                filteredList.add(user);
+            }
+        }
+        updateList(filteredList);
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    public void updateList(List<UserModel> newList) {
+        userList.clear();
+        userList.addAll(newList);
+        notifyDataSetChanged();
     }
 }
