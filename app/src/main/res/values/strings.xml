@@ -63,9 +63,9 @@
     <string name="all_your_vehicle_needs_in_one_place">All your vehicle needs in one place</string>
     <string name="popular_services">Popular Services</string>
     <string name="more_services">More\nServices</string>
-    <string name="welcome">WELCOME</string>
-    <string name="let_s_get_started">Let\'s get started</string>
-    <string name="select_language">Select Language</string>
+    <string name="welcome" translatable="false">WELCOME</string>
+    <string name="let_s_get_started" translatable="false">Let\'s get started</string>
+    <string name="select_language" translatable="false">Select Language</string>
     <string name="english" translatable="false">ENGLISH</string>
     <string name="bengali" translatable="false">বাংলা</string>
     <string name="log_in">Log In</string>
@@ -161,5 +161,5 @@
     <string name="make_admin">Make\nAdmin</string>
     <string name="discount_percentage">40%\nDiscount</string>
     <string name="on_all_servicing">On All Servicing</string>
-    <string name="company_name">Habibur Car Service</string>
+    <string name="company_name" translatable="false">Habibur Car Service</string>
 </resources>

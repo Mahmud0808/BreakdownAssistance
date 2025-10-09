@@ -19,6 +19,7 @@ import com.habibur.breakdown_assistance.R;
 import com.habibur.breakdown_assistance.config.Prefs;
 import com.habibur.breakdown_assistance.databinding.ActivityMainBinding;
 import com.habibur.breakdown_assistance.ui.fragments.LandingFragment;
+import com.habibur.breakdown_assistance.ui.fragments.LoginFragment;
 import com.habibur.breakdown_assistance.ui.fragments.MainFragment;
 import com.habibur.breakdown_assistance.utils.LocaleHelper;
 
@@ -48,10 +49,15 @@ public class MainActivity extends AppCompatActivity {
         fragmentManager = getSupportFragmentManager();
 
         if (savedInstanceState == null) {
-            if (Prefs.getBoolean("logged_in", true)) {
+            if (getIntent() != null && getIntent().getBooleanExtra("LoginFragment", false)) {
                 replaceFragment(new LandingFragment());
+                replaceFragment(new LoginFragment());
             } else {
-                replaceFragment(new MainFragment());
+                if (Prefs.getBoolean("logged_in", true)) {
+                    replaceFragment(new LandingFragment());
+                } else {
+                    replaceFragment(new MainFragment());
+                }
             }
         }
     }

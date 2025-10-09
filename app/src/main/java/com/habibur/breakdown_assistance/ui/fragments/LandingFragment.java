@@ -1,5 +1,6 @@
 package com.habibur.breakdown_assistance.ui.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,14 +26,24 @@ public class LandingFragment extends BaseFragment {
 
         binding.btnEnglish.setOnClickListener(v -> {
             Prefs.putString("app_language", "en-US");
-            MainActivity.replaceFragment(new LoginFragment());
+            restartActivityWithArgs();
         });
 
         binding.btnBengali.setOnClickListener(v -> {
             Prefs.putString("app_language", "bn-BD");
-            MainActivity.replaceFragment(new LoginFragment());
+            restartActivityWithArgs();
         });
 
         return binding.getRoot();
+    }
+
+    public void restartActivityWithArgs() {
+        Intent intent = new Intent(getActivity(), MainActivity.class);
+        intent.putExtra("LoginFragment", true);
+        startActivity(intent);
+
+        if (getActivity() != null) {
+            getActivity().finish();
+        }
     }
 }
