@@ -44,10 +44,10 @@ public class ServicingHistoryAdapter extends RecyclerView.Adapter<ServicingHisto
         holder.requestedBy.setText(requestService.getRequestedBy().getName() + " (" + requestService.getRequestedBy().getPhone() + ")");
         holder.garage.setText(requestService.getGarage().getName());
         holder.status.setText(requestService.getStatus().toString());
-        holder.assignedTo.setText(requestService.getAssignedTo() != null ? requestService.getAssignedTo().getName() + " (" + requestService.getAssignedTo().getPhone() + ")" : "Not Assigned");
-        holder.feedback.setText(requestService.getFeedback() != null ? requestService.getFeedback() : "No Feedback");
-        holder.review.setText(requestService.getReview() != null ? requestService.getReview() : "No Review");
-        holder.time.setText(TimeUtils.convertLongToTime("dd MMM yyyy, hh:mm a", requestService.getSubmitTime() != null ? requestService.getSubmitTime() : 0));
+        holder.assignedTo.setText(requestService.getAssignedTo() != null ? requestService.getAssignedTo().getName() + " (" + requestService.getAssignedTo().getPhone() + ")" : context.getString(R.string.not_assigned));
+        holder.feedback.setText(requestService.getFeedback() != null ? requestService.getFeedback() : context.getString(R.string.no_feedback));
+        holder.review.setText(requestService.getReview() != null ? requestService.getReview() : context.getString(R.string.no_review));
+        holder.time.setText(TimeUtils.convertLongToTime(context, "dd MMM yyyy, hh:mm a", requestService.getSubmitTime() != null ? requestService.getSubmitTime() : 0));
     }
 
     @Override

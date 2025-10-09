@@ -20,4 +20,19 @@
     <string name="otp_description"><![CDATA[We will send you a <b>One Time Password</b> to this mobile number]]></string>
     <string name="enter_otp_description"><![CDATA[Enter the OTP sent to <b>%s</b>]]></string>
     <string name="otp_time">Time Remaining %ss</string>
+    <string name="no_additional_info">No Additional Info</string>
+    <string name="no_feedback">No Feedback</string>
+    <string name="no_review">No Review</string>
+    <string name="please_enter_review">Please enter review</string>
+    <string name="review_submitted_successfully">Review submitted successfully</string>
+    <string name="user_not_logged_in">User not logged in</string>
+    <string name="user_not_found">User not found</string>
+    <string name="not_assigned">Not Assigned</string>
+    <string name="status_updated_successfully">Status updated successfully</string>
+    <string name="user">User</string>
+    <string name="mechanic">Mechanic</string>
+    <string name="admin">Admin</string>
+    <string name="logout_and_login_again_to_see_changes">Logout and login again to see changes</string>
+    <string name="account_type_changed_successfully">Account type changed successfully</string>
+    <string name="not_available">N/A</string>
 </resources>
