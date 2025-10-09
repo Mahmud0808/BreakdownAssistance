@@ -10,6 +10,9 @@ public class RequestModel {
     private RequestStatus status;
     private String feedback;
 
+    public RequestModel() {
+    }
+
     public RequestModel(String id, UserModel user, ServiceModel service, GarageModel garage, String additionalInfo, RequestStatus status, String feedback) {
         this.id = id;
         this.user = user;

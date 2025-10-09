@@ -9,6 +9,10 @@ public class UserModel {
     private String vehicleModel;
     private final AccountType accountType;
 
+    public UserModel() {
+        this.accountType = AccountType.USER;
+    }
+
     public UserModel(String id, String name, String phone, String vehicleCompany, String vehicleModel) {
         this.id = id;
         this.name = name;
