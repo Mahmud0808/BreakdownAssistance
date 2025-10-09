@@ -118,11 +118,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Starts From"
-                        android:textColor="#CCC"
+                        android:textColor="#AAA"
                         android:textSize="8sp"
                         tools:ignore="SmallSp" />
 
                     <TextView
+
                         android:id="@+id/tvMinimumPrice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
