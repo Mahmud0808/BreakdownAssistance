@@ -190,12 +190,12 @@ public class OtpVerificationFragment extends Fragment {
                     MainActivity.replaceFragment(new MainFragment());
                 } else {
                     firebaseAuth.signOut();
-                    Toast.makeText(requireContext(), "You don't have an account.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(requireContext(), R.string.you_don_t_have_an_account, Toast.LENGTH_SHORT).show();
                 }
             });
         } else {
             // Fallback case, user should not be null here
-            Toast.makeText(requireContext(), "Unexpected error occurred. Please try again.", Toast.LENGTH_LONG).show();
+            Toast.makeText(requireContext(), R.string.unexpected_error_occurred, Toast.LENGTH_LONG).show();
         }
     }
 

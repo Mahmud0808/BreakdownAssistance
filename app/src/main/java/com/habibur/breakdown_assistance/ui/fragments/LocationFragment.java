@@ -129,7 +129,7 @@ public class LocationFragment extends BaseFragment {
 
             MarkerOptions markerOptions = new MarkerOptions()
                     .position(latlng)
-                    .title("My Location");
+                    .title(getString(R.string.my_location));
             currentMarker = googleMap.addMarker(markerOptions);
 
             CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latlng, 15);

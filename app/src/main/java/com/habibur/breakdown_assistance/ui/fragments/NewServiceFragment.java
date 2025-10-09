@@ -89,7 +89,7 @@ public class NewServiceFragment extends BaseFragment {
                         binding.editTextServiceCharge.setText("");
                         binding.editTextDuration.setText("");
 
-                        Toast.makeText(v.getContext(), "Service saved successfully", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(v.getContext(), R.string.service_saved_successfully, Toast.LENGTH_SHORT).show();
                     })
                     .addOnFailureListener(e -> {
                         Toast.makeText(v.getContext(), "Error saving service: " + e.getMessage(), Toast.LENGTH_SHORT).show();

@@ -79,20 +79,20 @@ public class RequestServicingFragment extends BaseFragment {
                     boolean error = false;
 
                     if (vehicleCompany.isEmpty()) {
-                        binding.editTextVehicleCompany.setError("Enter vehicle company");
+                        binding.editTextVehicleCompany.setError(getString(R.string.enter_vehicle_company));
                         error = true;
                     }
 
                     if (vehicleModel.isEmpty()) {
-                        binding.editTextVehicleModel.setError("Enter vehicle model");
+                        binding.editTextVehicleModel.setError(getString(R.string.enter_vehicle_model));
                         error = true;
                     }
 
                     if (selectedGarage == null) {
-                        binding.textInputLayoutSelectGarage.setError("Select a garage");
+                        binding.textInputLayoutSelectGarage.setError(getString(R.string.select_a_garage));
                         error = true;
                     } else if (selectedGarage.getId() == null) {
-                        binding.textInputLayoutSelectGarage.setError("No garage available at this moment");
+                        binding.textInputLayoutSelectGarage.setError(getString(R.string.no_garage_available_at_this_moment));
                         error = true;
                     }
 
@@ -112,7 +112,7 @@ public class RequestServicingFragment extends BaseFragment {
                                     getActivity().onBackPressed();
                                 }
 
-                                Toast.makeText(v.getContext(), "Request submitted", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(v.getContext(), R.string.request_submitted, Toast.LENGTH_SHORT).show();
                             })
                             .addOnFailureListener(e -> {
                                 Toast.makeText(v.getContext(), "Error submitting request: " + e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -135,7 +135,7 @@ public class RequestServicingFragment extends BaseFragment {
                 }
 
                 if (garageList.isEmpty()) {
-                    garageList.add(new GarageModel(null, "None", 0, 0));
+                    garageList.add(new GarageModel(null, getString(R.string.none), 0, 0));
                 }
 
                 setupGarageDropdown(garageList);
@@ -191,11 +191,11 @@ public class RequestServicingFragment extends BaseFragment {
                         if (requestExists) {
                             binding.btnSubmit.setEnabled(false);
                             binding.btnSubmit.setAlpha(0.6f);
-                            binding.btnSubmit.setText("ALREADY SUBMITTED");
+                            binding.btnSubmit.setText(R.string.already_submitted);
                         } else {
                             binding.btnSubmit.setEnabled(true);
                             binding.btnSubmit.setAlpha(1f);
-                            binding.btnSubmit.setText("REQUEST SERVICING");
+                            binding.btnSubmit.setText(R.string.request_servicing);
                         }
                     } else {
                         Log.d(RequestServicingFragment.class.getSimpleName(), "Error checking request: ", task.getException());

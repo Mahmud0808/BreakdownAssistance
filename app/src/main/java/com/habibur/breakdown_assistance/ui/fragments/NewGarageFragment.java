@@ -35,17 +35,17 @@ public class NewGarageFragment extends BaseFragment {
             boolean error = false;
 
             if (garageName.isEmpty()) {
-                binding.editTextGarageName.setError("Enter garage name");
+                binding.editTextGarageName.setError(getString(R.string.enter_garage_name));
                 error = true;
             }
 
             if (latitudeString.isEmpty()) {
-                binding.editTextLatitude.setError("Enter latitude");
+                binding.editTextLatitude.setError(getString(R.string.enter_latitude));
                 error = true;
             }
 
             if (longitudeChargeString.isEmpty()) {
-                binding.editTextLongitude.setError("Enter longitude");
+                binding.editTextLongitude.setError(getString(R.string.enter_longitude));
                 error = true;
             }
 
@@ -67,7 +67,7 @@ public class NewGarageFragment extends BaseFragment {
                         binding.editTextLatitude.setText("");
                         binding.editTextLongitude.setText("");
 
-                        Toast.makeText(v.getContext(), "Garage saved successfully", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(v.getContext(), R.string.garage_saved_successfully, Toast.LENGTH_SHORT).show();
                     })
                     .addOnFailureListener(e -> {
                         Toast.makeText(v.getContext(), "Error saving garage: " + e.getMessage(), Toast.LENGTH_SHORT).show();

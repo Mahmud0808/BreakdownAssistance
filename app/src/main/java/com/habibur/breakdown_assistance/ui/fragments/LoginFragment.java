@@ -30,7 +30,7 @@ public class LoginFragment extends BaseFragment {
             String phone = binding.editTextPhoneNumber.getText().toString().trim().replace(" ", "");
 
             if (phone.isEmpty() || !phone.matches("^[+]?[0-9]{11,13}$")) {
-                binding.editTextPhoneNumber.setError("Enter valid phone number");
+                binding.editTextPhoneNumber.setError(getString(R.string.enter_valid_phone_number));
                 return;
             }
 
