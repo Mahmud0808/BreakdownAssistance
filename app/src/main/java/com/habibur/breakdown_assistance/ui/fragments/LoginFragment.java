@@ -89,6 +89,25 @@ public class LoginFragment extends BaseFragment {
             loginUserWithEmailPassword(email, password);
         });
 
+        binding.textViewForgotPassword.setOnClickListener(v -> {
+            String email = binding.editTextEmail.getText().toString().trim();
+
+            if (email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                binding.editTextEmail.setError(getString(R.string.enter_valid_email));
+                return;
+            }
+
+            binding.progressBar.setVisibility(View.VISIBLE);
+
+            firebaseAuth.sendPasswordResetEmail(email).addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    Toast.makeText(requireContext(), getString(R.string.password_reset_email_sent), Toast.LENGTH_SHORT).show();
+                }
+
+                binding.progressBar.setVisibility(View.INVISIBLE);
+            });
+        });
+
         binding.imageViewPhone.setOnClickListener(v -> {
             binding.linearLayoutPhoneLogin.setVisibility(View.VISIBLE);
             binding.linearLayoutEmailLogin.setVisibility(View.GONE);
