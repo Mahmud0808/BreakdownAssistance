@@ -54,6 +54,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Add New Garage"
+                            android:textAlignment="center"
                             android:textColor="@color/black"
                             android:textSize="14sp" />
 
@@ -87,6 +88,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Add New Service"
+                            android:textAlignment="center"
                             android:textColor="@color/black"
                             android:textSize="14sp" />
 
@@ -130,6 +132,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="User List"
+                            android:textAlignment="center"
                             android:textColor="@color/black"
                             android:textSize="14sp" />
 
@@ -163,6 +166,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="User Complaints"
+                            android:textAlignment="center"
                             android:textColor="@color/black"
                             android:textSize="14sp" />
 
@@ -199,13 +203,14 @@
                         <ImageView
                             android:layout_width="60dp"
                             android:layout_height="60dp"
-                            android:src="@drawable/ic_request_page"
+                            android:src="@drawable/ic_request_service"
                             app:tint="@color/accent" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Servicing Requests"
+                            android:textAlignment="center"
                             android:textColor="@color/black"
                             android:textSize="14sp" />
 
@@ -239,6 +244,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Servicing History"
+                            android:textAlignment="center"
                             android:textColor="@color/black"
                             android:textSize="14sp" />
 
