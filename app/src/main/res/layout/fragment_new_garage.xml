@@ -23,7 +23,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:text="Add New Garage"
+                android:text="@string/add_new_garage"
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:alpha="0.6"
-                android:text="Garage Name"
+                android:text="@string/garage_name"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/semi_transparent_black_bg"
-                android:hint="E.g. Habibur Auto Garage"
+                android:hint="@string/garage_name_hint"
                 android:inputType="text"
                 android:paddingHorizontal="18dp"
                 android:paddingVertical="12dp" />
@@ -54,7 +54,7 @@
                 android:layout_gravity="start"
                 android:layout_marginTop="16dp"
                 android:alpha="0.6"
-                android:text="Latitude"
+                android:text="@string/latitude"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
@@ -64,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/semi_transparent_black_bg"
-                android:hint="E.g. 23.777176"
+                android:hint="@string/latitude_hint"
                 android:inputType="numberDecimal"
                 android:paddingHorizontal="18dp"
                 android:paddingVertical="12dp" />
@@ -75,7 +75,7 @@
                 android:layout_gravity="start"
                 android:layout_marginTop="16dp"
                 android:alpha="0.6"
-                android:text="Longitude"
+                android:text="@string/longitude"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
@@ -85,7 +85,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/semi_transparent_black_bg"
-                android:hint="E.g. 90.399452"
+                android:hint="@string/longitude_hint"
                 android:inputType="numberDecimal"
                 android:paddingHorizontal="18dp"
                 android:paddingVertical="12dp" />
@@ -98,7 +98,7 @@
                 android:backgroundTint="@color/accent"
                 android:letterSpacing="0.04"
                 android:paddingVertical="14dp"
-                android:text="SUBMIT"
+                android:text="@string/submit"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 app:cornerRadius="6dp" />

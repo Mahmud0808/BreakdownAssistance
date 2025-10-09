@@ -23,7 +23,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:text="Submit a Complaint"
+                android:text="@string/submit_a_complaint"
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:alpha="0.6"
-                android:text="Contact Information"
+                android:text="@string/contact_information"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/semi_transparent_black_bg"
-                android:hint="Your phone or email"
+                android:hint="@string/contact_information_hint"
                 android:inputType="phone|textEmailAddress"
                 android:paddingHorizontal="18dp"
                 android:paddingVertical="12dp" />
@@ -54,7 +54,7 @@
                 android:layout_gravity="start"
                 android:layout_marginTop="16dp"
                 android:alpha="0.6"
-                android:text="Description"
+                android:text="@string/complaint_description"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
@@ -65,7 +65,7 @@
                 android:layout_marginTop="8dp"
                 android:background="@drawable/semi_transparent_black_bg"
                 android:gravity="start|top"
-                android:hint="E.g. I am facing some problems with my car..."
+                android:hint="@string/complaint_description_hint"
                 android:inputType="textMultiLine"
                 android:minLines="5"
                 android:paddingHorizontal="18dp"
@@ -79,7 +79,7 @@
                 android:backgroundTint="@color/accent"
                 android:letterSpacing="0.04"
                 android:paddingVertical="14dp"
-                android:text="SUBMIT"
+                android:text="@string/submit"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 app:cornerRadius="6dp" />

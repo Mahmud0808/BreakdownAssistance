@@ -33,7 +33,7 @@
                 android:layout_marginTop="18dp"
                 android:letterSpacing="0.04"
                 android:lineHeight="26sp"
-                android:text="Hi there"
+                android:text="@string/hi_there"
                 android:textColor="@color/black"
                 android:textSize="26sp"
                 android:textStyle="bold" />
@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:letterSpacing="0.01"
-                android:text="You can choose a service below"
+                android:text="@string/you_can_choose_a_service_below"
                 android:textColor="@color/black"
                 android:textSize="15sp" />
 
@@ -82,7 +82,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:lineHeight="24sp"
-                        android:text="Doorstep"
+                        android:text="@string/doorstep"
                         android:textColor="@color/white"
                         android:textSize="24sp"
                         android:textStyle="bold" />
@@ -92,7 +92,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:lineHeight="20sp"
-                        android:text="Bike &amp; Car Service"
+                        android:text="@string/bike_and_car_service"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -102,7 +102,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:lineHeight="16sp"
-                        android:text="All your vehicle needs in one place"
+                        android:text="@string/all_your_vehicle_needs_in_one_place"
                         android:textColor="@color/white"
                         android:textSize="16sp" />
 
@@ -135,7 +135,7 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="18dp"
-                android:text="Popular Services"
+                android:text="@string/popular_services"
                 android:textColor="@color/black"
                 android:textSize="14sp"
                 android:textStyle="bold" />
@@ -147,7 +147,7 @@
                 android:scrollbars="none">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:paddingHorizontal="24dp">
@@ -286,7 +286,7 @@
                             android:layout_gravity="bottom|start"
                             android:layout_margin="10dp"
                             android:lineHeight="12sp"
-                            android:text="More\nServices"
+                            android:text="@string/more_services"
                             android:textColor="@color/white"
                             android:textSize="10sp"
                             tools:ignore="SmallSp" />

@@ -94,7 +94,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="start"
                                 android:alpha="0.6"
-                                android:text="Minimum Price"
+                                android:text="@string/minimum_price"
                                 android:textColor="@color/black"
                                 android:textSize="14sp" />
 
@@ -123,7 +123,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="start"
                                 android:alpha="0.6"
-                                android:text="Service Charge"
+                                android:text="@string/service_charge"
                                 android:textColor="@color/black"
                                 android:textSize="14sp" />
 
@@ -148,7 +148,7 @@
                         android:layout_gravity="start"
                         android:layout_marginHorizontal="24dp"
                         android:alpha="0.6"
-                        android:text="Duration"
+                        android:text="@string/service_duration"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
 
@@ -175,7 +175,7 @@
                 android:layout_gravity="start"
                 android:layout_marginTop="16dp"
                 android:alpha="0.6"
-                android:text="Vehicle Company"
+                android:text="@string/vehicle_company"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
@@ -185,7 +185,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/semi_transparent_black_bg"
-                android:hint="E.g. Ford"
+                android:hint="@string/vehicle_company_hint"
                 android:inputType="text"
                 android:paddingHorizontal="18dp"
                 android:paddingVertical="12dp" />
@@ -196,7 +196,7 @@
                 android:layout_gravity="start"
                 android:layout_marginTop="16dp"
                 android:alpha="0.6"
-                android:text="Vehicle Model"
+                android:text="@string/vehicle_model"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
@@ -206,7 +206,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/semi_transparent_black_bg"
-                android:hint="E.g. Focus"
+                android:hint="@string/vehicle_model_hint"
                 android:inputType="text"
                 android:paddingHorizontal="18dp"
                 android:paddingVertical="12dp" />
@@ -217,7 +217,7 @@
                 android:layout_gravity="start"
                 android:layout_marginTop="16dp"
                 android:alpha="0.6"
-                android:text="Select Garage"
+                android:text="@string/select_garage"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
@@ -233,7 +233,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/semi_transparent_black_bg"
-                    android:hint="Choose Garage"
+                    android:hint="@string/select_garage_hint"
                     android:paddingHorizontal="18dp"
                     android:paddingVertical="12dp" />
 
@@ -245,7 +245,7 @@
                 android:layout_gravity="start"
                 android:layout_marginTop="16dp"
                 android:alpha="0.6"
-                android:text="Additional Information"
+                android:text="@string/additional_information"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
@@ -256,7 +256,7 @@
                 android:layout_marginTop="8dp"
                 android:background="@drawable/semi_transparent_black_bg"
                 android:gravity="start|top"
-                android:hint="E.g. I need a car wash service"
+                android:hint="@string/additional_information_hint"
                 android:inputType="textMultiLine"
                 android:minLines="3"
                 android:paddingHorizontal="18dp"
@@ -270,7 +270,7 @@
                 android:backgroundTint="@color/accent"
                 android:letterSpacing="0.04"
                 android:paddingVertical="14dp"
-                android:text="REQUEST SERVICING"
+                android:text="@string/request_servicing"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 app:cornerRadius="6dp" />

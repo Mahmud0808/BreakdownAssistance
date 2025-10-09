@@ -69,7 +69,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:drawableStart="@drawable/ic_check_tiny"
-                        android:text="Inspections &amp; Diagnosis"
+                        android:text="@string/inspections_and_diagnosis"
                         android:textColor="@color/black"
                         android:textSize="10sp"
                         android:textStyle="bold"
@@ -81,7 +81,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:drawableStart="@drawable/ic_check_tiny"
-                        android:text="Repair Cost Is Provided After Inspecting Problem"
+                        android:text="@string/repair_cost_provided_later"
                         android:textColor="@color/black"
                         android:textSize="10sp"
                         android:textStyle="bold"
@@ -118,7 +118,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Starts From"
+                        android:text="@string/starts_from"
                         android:textColor="#AAA"
                         android:textSize="8sp"
                         tools:ignore="SmallSp" />
@@ -147,9 +147,10 @@
                 android:backgroundTint="@color/accent"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
-                android:text="Next"
+                android:text="@string/next"
                 android:textColor="@color/white"
                 app:cornerRadius="8dp" />
+
         </LinearLayout>
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

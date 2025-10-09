@@ -23,7 +23,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Service: "
+                android:text="@string/service_colon"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -46,7 +46,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Requested By: "
+                android:text="@string/requested_by_colon"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -69,7 +69,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Garage: "
+                android:text="@string/garage_colon"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -92,7 +92,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Minimum Price: "
+                android:text="@string/minimum_price_colon"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -115,7 +115,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Service Charge: "
+                android:text="@string/service_charge_colon"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -138,7 +138,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Time: "
+                android:text="@string/time_colon"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -161,7 +161,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Additional Information:"
+                android:text="@string/additional_information_colon"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -183,7 +183,7 @@
             android:layout_gravity="start"
             android:layout_marginTop="16dp"
             android:alpha="0.6"
-            android:text="Feedback"
+            android:text="@string/feedback"
             android:textColor="@color/black"
             android:textSize="14sp" />
 
@@ -193,7 +193,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:background="@drawable/semi_transparent_black_bg"
-            android:hint="Rejection reason (optional)"
+            android:hint="@string/feedback_hint"
             android:inputType="textMultiLine"
             android:paddingHorizontal="18dp"
             android:paddingVertical="12dp" />
@@ -210,7 +210,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="@color/accent"
-                android:text="ACCEPT"
+                android:text="@string/accept"
                 app:cornerRadius="8dp" />
 
             <View
@@ -223,7 +223,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="@color/red"
-                android:text="REJECT"
+                android:text="@string/reject"
                 app:cornerRadius="8dp" />
 
         </LinearLayout>

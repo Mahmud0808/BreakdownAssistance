@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="36dp"
             android:letterSpacing="0.06"
-            android:text="WELCOME"
+            android:text="@string/welcome"
             android:textColor="@color/white"
             android:textSize="18sp" />
 
@@ -33,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:letterSpacing="0.04"
-            android:text="Let's get started"
+            android:text="@string/let_s_get_started"
             android:textColor="@color/white"
             android:textSize="11sp" />
 
@@ -57,7 +57,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:letterSpacing="0.04"
-                android:text="Select Language"
+                android:text="@string/select_language"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -70,7 +70,7 @@
                 android:backgroundTint="@color/black"
                 android:letterSpacing="0.04"
                 android:paddingVertical="14dp"
-                android:text="ENGLISH"
+                android:text="@string/english"
                 android:textColor="@color/white" />
 
             <com.google.android.material.button.MaterialButton
@@ -83,7 +83,7 @@
                 android:backgroundTint="@color/white"
                 android:letterSpacing="0.04"
                 android:paddingVertical="14dp"
-                android:text="BENGALI"
+                android:text="@string/bengali"
                 android:textColor="@color/black"
                 app:strokeColor="#CCC" />
 
