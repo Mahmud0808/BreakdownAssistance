@@ -4,6 +4,7 @@ import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 import static android.Manifest.permission.READ_MEDIA_IMAGES;
 import static android.Manifest.permission.READ_MEDIA_VIDEO;
 import static android.Manifest.permission.READ_MEDIA_VISUAL_USER_SELECTED;
+import static com.habibur.breakdown_assistance.BreakdownAssistance.getAppContext;
 import static com.habibur.breakdown_assistance.config.Constants.USER_DATABASE;
 
 import android.app.Activity;
@@ -110,11 +111,11 @@ public class ProfileFragment extends BaseFragment {
                                         .centerCrop()
                                         .override(300, 300);
 
-                                Glide.with(requireContext())
+                                Glide.with(getAppContext())
                                         .asBitmap()
                                         .apply(reqOptions)
                                         .placeholder(R.drawable.img_placeholder_profile_picture)
-                                        .error(R.drawable.img_error)
+                                        .error(R.drawable.img_placeholder_profile_picture)
                                         .dontAnimate()
                                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                                         .load(currentProfilePictureUrl)

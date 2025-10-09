@@ -1,5 +1,6 @@
 package com.habibur.breakdown_assistance.ui.fragments;
 
+import static com.habibur.breakdown_assistance.BreakdownAssistance.getAppContext;
 import static com.habibur.breakdown_assistance.config.Constants.SERVICE_DATABASE;
 import static com.habibur.breakdown_assistance.config.Constants.USER_DATABASE;
 
@@ -92,7 +93,7 @@ public class HomeFragment extends BaseFragment {
                         .centerCrop()
                         .override(300, 300);
 
-                Glide.with(requireContext())
+                Glide.with(getAppContext())
                         .asBitmap()
                         .apply(reqOptions)
                         .placeholder(R.drawable.img_loading)
@@ -102,7 +103,7 @@ public class HomeFragment extends BaseFragment {
                         .load(serviceList.get(size - 1).getImage())
                         .into(binding.imgService1);
 
-                Glide.with(requireContext())
+                Glide.with(getAppContext())
                         .asBitmap()
                         .apply(reqOptions)
                         .placeholder(R.drawable.img_loading)
@@ -112,7 +113,7 @@ public class HomeFragment extends BaseFragment {
                         .load(serviceList.get(size - 2).getImage())
                         .into(binding.imgService2);
 
-                Glide.with(requireContext())
+                Glide.with(getAppContext())
                         .asBitmap()
                         .apply(reqOptions)
                         .placeholder(R.drawable.img_loading)

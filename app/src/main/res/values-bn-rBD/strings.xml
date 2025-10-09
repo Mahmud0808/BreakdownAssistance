@@ -11,7 +11,7 @@
     <string name="servicing">সার্ভিসিং</string>
     <string name="servicing_history">সার্ভিসিং ইতিহাস</string>
     <string name="servicing_requests">সার্ভিসিং অনুরোধ</string>
-    <string name="my_servicing_requests">আমার সার্ভিসিং অনুরোধ সমূহ</string>
+    <string name="my_servicing_requests">আমার সার্ভিসিং অনুরোধ</string>
     <string name="users">ব্যবহারকারীরা</string>
     <string name="complaint">অভিযোগ</string>
     <string name="complaints">অভিযোগ সমূহ</string>
@@ -159,4 +159,14 @@
     <string name="current_location">বর্তমান অবস্থান</string>
     <string name="current_location_hint">আপনার বর্তমান অবস্থান বিস্তারিত লিখুন</string>
     <string name="enter_current_location">বর্তমান অবস্থান লিখুন</string>
+    <string name="try_another_way">অন্য উপায় চেষ্টা করুন</string>
+    <string name="enter_your_credentials">আপনার ইমেইল পাসওয়ার্ড লিখুন</string>
+    <string name="enter_valid_email">সঠিক ইমেল ঠিকানা লিখুন</string>
+    <string name="enter_password">পাসওয়ার্ড লিখুন</string>
+    <string name="password_length">পাসওয়ার্ড কমপক্ষে ৮ অক্ষরের হতে হবে</string>
+    <string name="email_address">ইমেইল ঠিকানা</string>
+    <string name="password">পাসওয়ার্ড</string>
+    <string name="repeat_password">পাসওয়ার্ড পুনরাবৃত্তি</string>
+    <string name="password_mismatch">পাসওয়ার্ড মিলছে না</string>
+    <string name="registration_successful">নিবন্ধন সফল হয়েছে</string>
 </resources>
