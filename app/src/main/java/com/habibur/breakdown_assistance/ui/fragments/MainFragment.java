@@ -54,45 +54,71 @@ public class MainFragment extends BaseFragment {
     }
 
     private void setupBottomNavigationView() {
-        if (Prefs.isAdminOrMechanic()) {
-            binding.bottomNavigationView.getMenu().clear();
-            binding.bottomNavigationView.inflateMenu(R.menu.bottom_nav_menu_extended);
+        binding.bottomNavigationView.getMenu().clear();
+
+        if (Prefs.isAdmin()) {
+            binding.bottomNavigationView.inflateMenu(R.menu.bottom_nav_menu_admin);
+        } else if (Prefs.isMechanic()) {
+            binding.bottomNavigationView.inflateMenu(R.menu.bottom_nav_menu_mechanic);
+        } else {
+            binding.bottomNavigationView.inflateMenu(R.menu.bottom_nav_menu_user);
         }
 
         getChildFragmentManager().addOnBackStackChangedListener(() -> {
             String tag = FragmentUtils.getTopFragment(getChildFragmentManager());
 
-            int profileIndex = Prefs.isAdminOrMechanic() ? 4 : 3;
-
-            if (Objects.equals(tag, HomeFragment.class.getSimpleName())) {
-                binding.bottomNavigationView.getMenu().getItem(0).setChecked(true);
-            } else if (Objects.equals(tag, ServicesFragment.class.getSimpleName())) {
-                binding.bottomNavigationView.getMenu().getItem(1).setChecked(true);
-            } else if (Objects.equals(tag, LocationFragment.class.getSimpleName())) {
-                binding.bottomNavigationView.getMenu().getItem(2).setChecked(true);
-            } else if (Objects.equals(tag, PanelFragment.class.getSimpleName())) {
-                binding.bottomNavigationView.getMenu().getItem(3).setChecked(true);
-            } else if (Objects.equals(tag, ProfileFragment.class.getSimpleName())) {
-                binding.bottomNavigationView.getMenu().getItem(profileIndex).setChecked(true);
+            if (Prefs.isAdmin()) {
+                if (Objects.equals(tag, HomeFragment.class.getSimpleName())) {
+                    binding.bottomNavigationView.getMenu().getItem(0).setChecked(true);
+                } else if (Objects.equals(tag, ServicesFragment.class.getSimpleName())) {
+                    binding.bottomNavigationView.getMenu().getItem(1).setChecked(true);
+                } else if (Objects.equals(tag, LocationFragment.class.getSimpleName())) {
+                    binding.bottomNavigationView.getMenu().getItem(2).setChecked(true);
+                } else if (Objects.equals(tag, PanelFragment.class.getSimpleName())) {
+                    binding.bottomNavigationView.getMenu().getItem(3).setChecked(true);
+                } else if (Objects.equals(tag, ProfileFragment.class.getSimpleName())) {
+                    binding.bottomNavigationView.getMenu().getItem(4).setChecked(true);
+                }
+            } else if (Prefs.isMechanic()) {
+                if (Objects.equals(tag, PanelFragment.class.getSimpleName())) {
+                    binding.bottomNavigationView.getMenu().getItem(0).setChecked(true);
+                } else if (Objects.equals(tag, LocationFragment.class.getSimpleName())) {
+                    binding.bottomNavigationView.getMenu().getItem(1).setChecked(true);
+                } else if (Objects.equals(tag, ProfileFragment.class.getSimpleName())) {
+                    binding.bottomNavigationView.getMenu().getItem(2).setChecked(true);
+                }
+            } else {
+                if (Objects.equals(tag, HomeFragment.class.getSimpleName())) {
+                    binding.bottomNavigationView.getMenu().getItem(0).setChecked(true);
+                } else if (Objects.equals(tag, ServicesFragment.class.getSimpleName())) {
+                    binding.bottomNavigationView.getMenu().getItem(1).setChecked(true);
+                } else if (Objects.equals(tag, LocationFragment.class.getSimpleName())) {
+                    binding.bottomNavigationView.getMenu().getItem(2).setChecked(true);
+                } else if (Objects.equals(tag, ProfileFragment.class.getSimpleName())) {
+                    binding.bottomNavigationView.getMenu().getItem(3).setChecked(true);
+                }
             }
         });
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             if (item.getItemId() == R.id.nav_home) {
                 replaceFragment(new HomeFragment());
+                return true;
             } else if (item.getItemId() == R.id.nav_services) {
                 replaceFragment(new ServicesFragment());
+                return true;
             } else if (item.getItemId() == R.id.nav_location) {
                 replaceFragment(new LocationFragment());
+                return true;
             } else if (item.getItemId() == R.id.nav_panel) {
                 replaceFragment(new PanelFragment());
+                return true;
             } else if (item.getItemId() == R.id.nav_profile) {
                 replaceFragment(new ProfileFragment());
+                return true;
             } else {
                 return false;
             }
-
-            return true;
         });
 
         binding.bottomNavigationView.setOnItemReselectedListener(item -> {
@@ -120,17 +146,42 @@ public class MainFragment extends BaseFragment {
         fragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out, R.anim.fade_in, R.anim.fade_out);
         fragmentTransaction.replace(R.id.fragmentContainer, fragment);
 
-        if (Objects.equals(tag, HomeFragment.class.getSimpleName())) {
-            fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-        } else if (Objects.equals(tag, ServicesFragment.class.getSimpleName()) ||
-                Objects.equals(tag, LocationFragment.class.getSimpleName()) ||
-                Objects.equals(tag, PanelFragment.class.getSimpleName()) ||
-                Objects.equals(tag, ProfileFragment.class.getSimpleName())
-        ) {
-            fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-            fragmentTransaction.addToBackStack(tag);
+        if (Prefs.isAdmin()) {
+            if (Objects.equals(tag, HomeFragment.class.getSimpleName())) {
+                fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            } else if (Objects.equals(tag, ServicesFragment.class.getSimpleName()) ||
+                    Objects.equals(tag, LocationFragment.class.getSimpleName()) ||
+                    Objects.equals(tag, PanelFragment.class.getSimpleName()) ||
+                    Objects.equals(tag, ProfileFragment.class.getSimpleName())
+            ) {
+                fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                fragmentTransaction.addToBackStack(tag);
+            } else {
+                fragmentTransaction.addToBackStack(tag);
+            }
+        } else if (Prefs.isMechanic()) {
+            if (Objects.equals(tag, PanelFragment.class.getSimpleName())) {
+                fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            } else if (Objects.equals(tag, LocationFragment.class.getSimpleName()) ||
+                    Objects.equals(tag, ProfileFragment.class.getSimpleName())
+            ) {
+                fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                fragmentTransaction.addToBackStack(tag);
+            } else {
+                fragmentTransaction.addToBackStack(tag);
+            }
         } else {
-            fragmentTransaction.addToBackStack(tag);
+            if (Objects.equals(tag, HomeFragment.class.getSimpleName())) {
+                fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            } else if (Objects.equals(tag, ServicesFragment.class.getSimpleName()) ||
+                    Objects.equals(tag, LocationFragment.class.getSimpleName()) ||
+                    Objects.equals(tag, ProfileFragment.class.getSimpleName())
+            ) {
+                fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                fragmentTransaction.addToBackStack(tag);
+            } else {
+                fragmentTransaction.addToBackStack(tag);
+            }
         }
 
         fragmentTransaction.commit();

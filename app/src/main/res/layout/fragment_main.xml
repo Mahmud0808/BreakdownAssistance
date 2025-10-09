@@ -23,6 +23,6 @@
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"
         app:labelVisibilityMode="selected"
-        app:menu="@menu/bottom_nav_menu" />
+        app:menu="@menu/bottom_nav_menu_user" />
 
 </RelativeLayout>
