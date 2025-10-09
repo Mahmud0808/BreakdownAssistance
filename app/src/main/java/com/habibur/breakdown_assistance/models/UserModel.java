@@ -7,6 +7,7 @@ public class UserModel {
     private String phone;
     private String vehicleCompany;
     private String vehicleModel;
+    private final AccountType accountType;
 
     public UserModel(String id, String name, String phone, String vehicleCompany, String vehicleModel) {
         this.id = id;
@@ -14,6 +15,7 @@ public class UserModel {
         this.phone = phone;
         this.vehicleCompany = vehicleCompany;
         this.vehicleModel = vehicleModel;
+        this.accountType = AccountType.USER;
     }
 
     public String getId() {
@@ -54,5 +56,13 @@ public class UserModel {
 
     public void setVehicleModel(String vehicleModel) {
         this.vehicleModel = vehicleModel;
+    }
+
+    public boolean isMechanic() {
+        return accountType == AccountType.MECHANIC;
+    }
+
+    public boolean isAdmin() {
+        return accountType == AccountType.ADMIN;
     }
 }
