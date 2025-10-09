@@ -82,7 +82,6 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceV
                         .get()
                         .addOnSuccessListener(documentSnapshot -> {
                             if (documentSnapshot.exists()) {
-
                                 UserModel user = documentSnapshot.toObject(UserModel.class);
 
                                 Bundle bundle = new Bundle();
@@ -94,12 +93,12 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceV
 
                                 MainFragment.replaceFragment(fragment);
                             } else {
-                                Log.e("Adapter", "User not found");
+                                Log.e(ServiceAdapter.class.getSimpleName(), "User not found");
                             }
                         })
-                        .addOnFailureListener(e -> Log.e("Adapter", Objects.requireNonNull(e.getMessage())));
+                        .addOnFailureListener(e -> Log.e(ServiceAdapter.class.getSimpleName(), Objects.requireNonNull(e.getMessage())));
             } else {
-                Log.e("Adapter", "User not logged in");
+                Log.e(ServiceAdapter.class.getSimpleName(), "User not logged in");
             }
         });
     }
