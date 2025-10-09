@@ -9,7 +9,7 @@ public class UserModel implements Serializable {
     private String phone;
     private String vehicleCompany;
     private String vehicleModel;
-    private final AccountType accountType;
+    private AccountType accountType;
 
     public UserModel() {
         this.accountType = AccountType.USER;
@@ -66,5 +66,9 @@ public class UserModel implements Serializable {
 
     public AccountType getAccountType() {
         return accountType;
+    }
+
+    public void setAccountType(AccountType accountType) {
+        this.accountType = accountType;
     }
 }
