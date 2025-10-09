@@ -13,8 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:orientation="vertical"
-        android:paddingHorizontal="60dp">
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
@@ -46,7 +45,7 @@
                 android:id="@+id/editTextOtp1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="12dp"
+                android:layout_marginEnd="8dp"
                 android:background="@drawable/white_square_bg"
                 android:gravity="center"
                 android:hint="0"
@@ -59,7 +58,7 @@
                 android:id="@+id/editTextOtp2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="12dp"
+                android:layout_marginEnd="8dp"
                 android:background="@drawable/white_square_bg"
                 android:gravity="center"
                 android:hint="0"
@@ -72,7 +71,7 @@
                 android:id="@+id/editTextOtp3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="12dp"
+                android:layout_marginEnd="8dp"
                 android:background="@drawable/white_square_bg"
                 android:gravity="center"
                 android:hint="0"
@@ -83,6 +82,32 @@
 
             <EditText
                 android:id="@+id/editTextOtp4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/white_square_bg"
+                android:gravity="center"
+                android:hint="0"
+                android:inputType="number"
+                android:maxLength="1"
+                android:paddingHorizontal="18dp"
+                android:paddingVertical="12dp" />
+
+            <EditText
+                android:id="@+id/editTextOtp5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/white_square_bg"
+                android:gravity="center"
+                android:hint="0"
+                android:inputType="number"
+                android:maxLength="1"
+                android:paddingHorizontal="18dp"
+                android:paddingVertical="12dp" />
+
+            <EditText
+                android:id="@+id/editTextOtp6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/white_square_bg"
