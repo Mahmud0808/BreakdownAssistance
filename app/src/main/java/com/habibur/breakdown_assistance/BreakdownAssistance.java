@@ -28,13 +28,6 @@ public class BreakdownAssistance extends Application {
         return LocaleHelper.setLocale(contextReference.get());
     }
 
-    public static FirebaseFirestore getFirestore() {
-        if (firestoreReference == null || firestoreReference.get() == null) {
-            firestoreReference = new WeakReference<>(FirebaseFirestore.getInstance());
-        }
-        return firestoreReference.get();
-    }
-
     private static BreakdownAssistance getInstance() {
         if (instance == null) {
             instance = new BreakdownAssistance();

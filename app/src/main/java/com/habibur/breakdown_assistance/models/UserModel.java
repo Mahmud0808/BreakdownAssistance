@@ -58,11 +58,7 @@ public class UserModel {
         this.vehicleModel = vehicleModel;
     }
 
-    public boolean isMechanic() {
-        return accountType == AccountType.MECHANIC;
-    }
-
-    public boolean isAdmin() {
-        return accountType == AccountType.ADMIN;
+    public AccountType getAccountType() {
+        return accountType;
     }
 }
