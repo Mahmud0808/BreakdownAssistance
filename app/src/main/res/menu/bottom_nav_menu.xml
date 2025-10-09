@@ -4,20 +4,20 @@
         android:id="@+id/nav_home"
         android:enabled="true"
         android:icon="@drawable/ic_nav_home"
-        android:title="Home" />
+        android:title="@string/home" />
     <item
         android:id="@+id/nav_services"
         android:enabled="true"
         android:icon="@drawable/ic_nav_services"
-        android:title="Services" />
+        android:title="@string/services" />
     <item
         android:id="@+id/nav_location"
         android:enabled="true"
         android:icon="@drawable/ic_nav_location"
-        android:title="Location" />
+        android:title="@string/location" />
     <item
         android:id="@+id/nav_profile"
         android:enabled="true"
         android:icon="@drawable/ic_nav_profile"
-        android:title="Profile" />
+        android:title="@string/profile" />
 </menu>

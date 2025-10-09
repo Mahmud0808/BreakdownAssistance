@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 
+import com.habibur.breakdown_assistance.R;
 import com.habibur.breakdown_assistance.databinding.FragmentHomeBinding;
 import com.habibur.breakdown_assistance.utils.ViewUtils;
 
@@ -18,7 +19,7 @@ public class HomeFragment extends BaseFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
 
-        ViewUtils.applyWindowInsets(binding.header.appBarLayout, true, false);
+        ViewUtils.setToolbarTitle(requireContext(), binding.header.toolbar, R.string.app_name, false);
 
         return binding.getRoot();
     }
