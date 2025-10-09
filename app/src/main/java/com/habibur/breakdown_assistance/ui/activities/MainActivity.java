@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentManager = getSupportFragmentManager();
 
         if (savedInstanceState == null) {
-            if (Prefs.getBoolean("first_run", true)) {
+            if (Prefs.getBoolean("logged_in", true)) {
                 replaceFragment(new LandingFragment());
             } else {
                 replaceFragment(new MainFragment());

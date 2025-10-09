@@ -7,8 +7,11 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.habibur.breakdown_assistance.R;
+import com.habibur.breakdown_assistance.config.Prefs;
 import com.habibur.breakdown_assistance.databinding.FragmentProfileBinding;
+import com.habibur.breakdown_assistance.ui.activities.MainActivity;
 import com.habibur.breakdown_assistance.utils.ViewUtils;
 
 public class ProfileFragment extends BaseFragment {
@@ -20,6 +23,13 @@ public class ProfileFragment extends BaseFragment {
         binding = FragmentProfileBinding.inflate(inflater, container, false);
 
         ViewUtils.setToolbarTitle(requireContext(), binding.header.toolbar, R.string.profile, true);
+
+        binding.btnLogout.setOnClickListener(v -> {
+            Prefs.clearPref("logged_in");
+            Prefs.clearPref("account_type");
+            FirebaseAuth.getInstance().signOut();
+            MainActivity.replaceFragment(new LandingFragment());
+        });
 
         return binding.getRoot();
     }
