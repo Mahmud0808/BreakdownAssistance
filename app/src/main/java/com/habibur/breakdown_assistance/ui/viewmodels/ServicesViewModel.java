@@ -1,6 +1,6 @@
 package com.habibur.breakdown_assistance.ui.viewmodels;
 
-import static com.habibur.breakdown_assistance.config.Constants.SERVICES_DATABASE;
+import static com.habibur.breakdown_assistance.config.Constants.REQUESTED_SERVICES_DATABASE;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -26,7 +26,7 @@ public class ServicesViewModel extends ViewModel {
     private void getAllServices() {
         _allServices.setValue(Resource.loading());
 
-        firestore.collection(SERVICES_DATABASE).addSnapshotListener((value, error) -> {
+        firestore.collection(REQUESTED_SERVICES_DATABASE).addSnapshotListener((value, error) -> {
             if (error != null) {
                 _allServices.setValue(Resource.error(error.getMessage()));
             } else {
