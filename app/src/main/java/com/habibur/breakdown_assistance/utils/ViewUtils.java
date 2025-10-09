@@ -17,9 +17,11 @@ public class ViewUtils {
     public static void applyWindowInsets(View view, boolean top, boolean bottom) {
         ViewCompat.setOnApplyWindowInsetsListener(view, (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            int paddingTop = top ? systemBars.top : 0;
-            int paddingBottom = bottom ? systemBars.bottom : 0;
-            v.setPadding(systemBars.left, paddingTop, systemBars.right, paddingBottom);
+            int paddingTop = top ? systemBars.top + view.getPaddingTop() : view.getPaddingTop();
+            int paddingBottom = bottom ? systemBars.bottom + view.getPaddingBottom() : view.getPaddingBottom();
+            int paddingLeft = systemBars.left + view.getPaddingLeft();
+            int paddingRight = systemBars.right + view.getPaddingRight();
+            v.setPadding(paddingLeft, paddingTop, paddingRight, paddingBottom);
             return insets;
         });
     }
