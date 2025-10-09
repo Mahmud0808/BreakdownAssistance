@@ -4,9 +4,13 @@ import static com.habibur.breakdown_assistance.config.Constants.USER_DATABASE;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -105,6 +109,8 @@ public class OtpVerificationFragment extends Fragment {
             startCountdownTimer();
         });
 
+        setupOtpInputs();
+
         return binding.getRoot();
     }
 
@@ -181,7 +187,7 @@ public class OtpVerificationFragment extends Fragment {
                     String accountType = docTask.getResult().getString("accountType");
                     Prefs.putString("account_type", accountType);
 
-                    goToMainFragment();
+                    MainActivity.replaceFragment(new MainFragment());
                 } else {
                     firebaseAuth.signOut();
                     Toast.makeText(requireContext(), "You don't have an account.", Toast.LENGTH_SHORT).show();
@@ -210,7 +216,7 @@ public class OtpVerificationFragment extends Fragment {
             db.collection(USER_DATABASE).document(userId).set(userModel)
                     .addOnSuccessListener(aVoid -> {
                         Prefs.putString("account_type", "USER");
-                        goToMainFragment();
+                        MainActivity.replaceFragment(new MainFragment());
                     })
                     .addOnFailureListener(e -> {
                         Toast.makeText(requireContext(), "Registration failed: " + e.getMessage(), Toast.LENGTH_LONG).show();
@@ -218,8 +224,47 @@ public class OtpVerificationFragment extends Fragment {
         }
     }
 
-    private void goToMainFragment() {
-        MainActivity.replaceFragment(new MainFragment());
+    private void setupOtpInputs() {
+        binding.editTextOtp1.addTextChangedListener(new OtpTextWatcher(binding.editTextOtp1, null, binding.editTextOtp2));
+        binding.editTextOtp2.addTextChangedListener(new OtpTextWatcher(binding.editTextOtp2, binding.editTextOtp1, binding.editTextOtp3));
+        binding.editTextOtp3.addTextChangedListener(new OtpTextWatcher(binding.editTextOtp3, binding.editTextOtp2, binding.editTextOtp4));
+        binding.editTextOtp4.addTextChangedListener(new OtpTextWatcher(binding.editTextOtp4, binding.editTextOtp3, binding.editTextOtp5));
+        binding.editTextOtp5.addTextChangedListener(new OtpTextWatcher(binding.editTextOtp5, binding.editTextOtp4, binding.editTextOtp6));
+        binding.editTextOtp6.addTextChangedListener(new OtpTextWatcher(binding.editTextOtp6, binding.editTextOtp5, null));
+    }
+
+    private static class OtpTextWatcher implements TextWatcher {
+        private final EditText nextView;
+
+        OtpTextWatcher(EditText currentView, EditText previousView, EditText nextView) {
+            this.nextView = nextView;
+
+            currentView.setOnKeyListener((v, keyCode, event) -> {
+                if (keyCode == KeyEvent.KEYCODE_DEL && event.getAction() == KeyEvent.ACTION_DOWN) {
+                    if (currentView.getText().toString().isEmpty() && previousView != null) {
+                        previousView.requestFocus();
+                        previousView.setText("");
+                        return true;
+                    }
+                }
+                return false;
+            });
+        }
+
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            if (s.length() == 1 && nextView != null) {
+                nextView.requestFocus();
+            }
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+        }
     }
 
     @Override
