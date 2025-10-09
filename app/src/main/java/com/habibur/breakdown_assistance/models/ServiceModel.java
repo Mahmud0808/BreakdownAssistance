@@ -8,16 +8,14 @@ public class ServiceModel {
     private String description;
     private int minimumPrice;
     private int serviceCharge;
-    private String feedback;
 
-    public ServiceModel(String id, String image, String title, String description, int minimumPrice, int serviceCharge, String feedback) {
+    public ServiceModel(String id, String image, String title, String description, int minimumPrice, int serviceCharge) {
         this.id = id;
         this.image = image;
         this.title = title;
         this.description = description;
         this.minimumPrice = minimumPrice;
         this.serviceCharge = serviceCharge;
-        this.feedback = feedback;
     }
 
     public String getId() {
@@ -66,13 +64,5 @@ public class ServiceModel {
 
     public void setServiceCharge(int serviceCharge) {
         this.serviceCharge = serviceCharge;
-    }
-
-    public String getFeedback() {
-        return feedback;
-    }
-
-    public void setFeedback(String feedback) {
-        this.feedback = feedback;
     }
 }
