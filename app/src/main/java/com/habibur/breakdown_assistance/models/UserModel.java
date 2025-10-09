@@ -10,18 +10,20 @@ public class UserModel implements Serializable {
     private String vehicleCompany;
     private String vehicleModel;
     private AccountType accountType;
+    private String imageUrl;
 
     public UserModel() {
         this.accountType = AccountType.USER;
     }
 
-    public UserModel(String id, String name, String phone, String vehicleCompany, String vehicleModel) {
+    public UserModel(String id, String name, String phone, String vehicleCompany, String vehicleModel, String imageUrl) {
         this.id = id;
         this.name = name;
         this.phone = phone;
         this.vehicleCompany = vehicleCompany;
         this.vehicleModel = vehicleModel;
         this.accountType = AccountType.USER;
+        this.imageUrl = imageUrl;
     }
 
     public String getId() {
@@ -70,5 +72,13 @@ public class UserModel implements Serializable {
 
     public void setAccountType(AccountType accountType) {
         this.accountType = accountType;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }
