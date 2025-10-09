@@ -172,13 +172,31 @@ public class RequestServicingFragment extends BaseFragment {
 
     private void checkRequestAlreadyExists(UserModel userModel, ServiceModel serviceModel) {
         firestore.collection(REQUESTED_SERVICES_DATABASE)
-                .whereEqualTo("requestedBy.id", userModel.getId())
-                .whereEqualTo("service.id", serviceModel.getId())
-                .whereEqualTo("assignedTo", null)
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        binding.btnSubmit.setEnabled(task.getResult().isEmpty());
+                        boolean requestExists = false;
+
+                        for (QueryDocumentSnapshot document : task.getResult()) {
+                            RequestModel request = document.toObject(RequestModel.class);
+
+                            if (request.getRequestedBy().getId().equals(userModel.getId()) &&
+                                    request.getService().getId().equals(serviceModel.getId()) &&
+                                    request.getAssignedTo() == null) {
+                                requestExists = true;
+                                break;
+                            }
+                        }
+
+                        if (requestExists) {
+                            binding.btnSubmit.setEnabled(false);
+                            binding.btnSubmit.setAlpha(0.6f);
+                            binding.btnSubmit.setText("ALREADY SUBMITTED");
+                        } else {
+                            binding.btnSubmit.setEnabled(true);
+                            binding.btnSubmit.setAlpha(1f);
+                            binding.btnSubmit.setText("REQUEST SERVICING");
+                        }
                     } else {
                         Log.d(RequestServicingFragment.class.getSimpleName(), "Error checking request: ", task.getException());
                     }
