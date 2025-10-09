@@ -1,6 +1,5 @@
 package com.habibur.breakdown_assistance.adapters;
 
-import static com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions.withCrossFade;
 import static com.habibur.breakdown_assistance.config.Constants.USER_DATABASE;
 
 import android.annotation.SuppressLint;
@@ -55,7 +54,7 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceV
         ServiceModel service = serviceList.get(position);
 
         RequestOptions reqOptions = new RequestOptions()
-                .fitCenter()
+                .centerCrop()
                 .override(300, 300);
 
         Glide.with(context)
@@ -63,8 +62,7 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceV
                 .apply(reqOptions)
                 .placeholder(R.drawable.img_loading)
                 .error(R.drawable.img_error)
-                .transition(withCrossFade())
-                .centerCrop()
+                .dontAnimate()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .load(service.getImage())
                 .into(holder.image);

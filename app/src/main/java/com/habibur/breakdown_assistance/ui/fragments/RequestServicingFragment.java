@@ -1,7 +1,5 @@
 package com.habibur.breakdown_assistance.ui.fragments;
 
-import static com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions.withCrossFade;
-
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -36,10 +34,10 @@ public class RequestServicingFragment extends BaseFragment {
             if (serviceModel != null && userModel != null) {
                 Glide.with(requireContext())
                         .asBitmap()
+                        .centerCrop()
                         .placeholder(R.drawable.img_loading)
                         .error(R.drawable.img_error)
-                        .transition(withCrossFade())
-                        .centerCrop()
+                        .dontAnimate()
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .load(serviceModel.getImage())
                         .into(binding.imageView);
