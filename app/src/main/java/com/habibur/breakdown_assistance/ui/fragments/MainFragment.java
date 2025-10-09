@@ -54,8 +54,15 @@ public class MainFragment extends BaseFragment {
     }
 
     private void setupBottomNavigationView() {
+        if (Prefs.isAdminOrMechanic()) {
+            binding.bottomNavigationView.getMenu().clear();
+            binding.bottomNavigationView.inflateMenu(R.menu.bottom_nav_menu_extended);
+        }
+
         getChildFragmentManager().addOnBackStackChangedListener(() -> {
             String tag = FragmentUtils.getTopFragment(getChildFragmentManager());
+
+            int profileIndex = Prefs.isAdminOrMechanic() ? 4 : 3;
 
             if (Objects.equals(tag, HomeFragment.class.getSimpleName())) {
                 binding.bottomNavigationView.getMenu().getItem(0).setChecked(true);
@@ -63,8 +70,10 @@ public class MainFragment extends BaseFragment {
                 binding.bottomNavigationView.getMenu().getItem(1).setChecked(true);
             } else if (Objects.equals(tag, LocationFragment.class.getSimpleName())) {
                 binding.bottomNavigationView.getMenu().getItem(2).setChecked(true);
-            } else if (Objects.equals(tag, ProfileFragment.class.getSimpleName())) {
+            } else if (Objects.equals(tag, PanelFragment.class.getSimpleName())) {
                 binding.bottomNavigationView.getMenu().getItem(3).setChecked(true);
+            } else if (Objects.equals(tag, ProfileFragment.class.getSimpleName())) {
+                binding.bottomNavigationView.getMenu().getItem(profileIndex).setChecked(true);
             }
         });
 
@@ -75,6 +84,8 @@ public class MainFragment extends BaseFragment {
                 replaceFragment(new ServicesFragment());
             } else if (item.getItemId() == R.id.nav_location) {
                 replaceFragment(new LocationFragment());
+            } else if (item.getItemId() == R.id.nav_panel) {
+                replaceFragment(new PanelFragment());
             } else if (item.getItemId() == R.id.nav_profile) {
                 replaceFragment(new ProfileFragment());
             } else {
@@ -113,6 +124,7 @@ public class MainFragment extends BaseFragment {
             fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
         } else if (Objects.equals(tag, ServicesFragment.class.getSimpleName()) ||
                 Objects.equals(tag, LocationFragment.class.getSimpleName()) ||
+                Objects.equals(tag, PanelFragment.class.getSimpleName()) ||
                 Objects.equals(tag, ProfileFragment.class.getSimpleName())
         ) {
             fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
