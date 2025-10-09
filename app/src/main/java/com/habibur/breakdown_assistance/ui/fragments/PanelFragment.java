@@ -22,7 +22,7 @@ public class PanelFragment extends BaseFragment {
 
         ViewUtils.setToolbarTitle(requireContext(), binding.header.toolbar, R.string.panel, true);
 
-        binding.cardAddService.setVisibility(Prefs.isAdmin() ? View.VISIBLE : View.GONE);
+        binding.cardAddGarage.setVisibility(Prefs.isAdmin() ? View.VISIBLE : View.GONE);
         binding.cardAddGarage.setOnClickListener(v -> MainFragment.replaceFragment(new NewGarageFragment()));
 
         binding.cardAddService.setVisibility(Prefs.isAdmin() ? View.VISIBLE : View.GONE);
