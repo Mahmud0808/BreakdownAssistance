@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.button.MaterialButton;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.habibur.breakdown_assistance.R;
 import com.habibur.breakdown_assistance.models.AccountType;
@@ -98,7 +99,11 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
                             user.setAccountType(accountType);
                             firestore.collection(USER_DATABASE).document(userId).set(user);
 
-                            Toast.makeText(context, "Account type changed successfully", Toast.LENGTH_SHORT).show();
+                            if (userId.equals(FirebaseAuth.getInstance().getUid())) {
+                                Toast.makeText(context, "Logout and login again to see changes", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(context, "Account type changed successfully", Toast.LENGTH_SHORT).show();
+                            }
                         }
                     } else {
                         Log.e(UserAdapter.class.getSimpleName(), "User not found");
