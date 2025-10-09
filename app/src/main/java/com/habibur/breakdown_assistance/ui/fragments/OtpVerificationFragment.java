@@ -49,6 +49,8 @@ public class OtpVerificationFragment extends Fragment {
         public void onCodeSent(@NonNull String id, @NonNull PhoneAuthProvider.ForceResendingToken token) {
             super.onCodeSent(id, token);
             verificationId = id;
+            binding.btnVerify.setEnabled(true);
+            binding.btnVerify.setAlpha(1f);
         }
 
         @Override
@@ -115,6 +117,10 @@ public class OtpVerificationFragment extends Fragment {
     }
 
     private void sendVerificationCode(String number) {
+        verificationId = "";
+        binding.btnVerify.setEnabled(false);
+        binding.btnVerify.setAlpha(0.5f);
+
         PhoneAuthOptions options = PhoneAuthOptions.newBuilder(firebaseAuth)
                 .setPhoneNumber(number)
                 .setTimeout(60L, TimeUnit.SECONDS)
