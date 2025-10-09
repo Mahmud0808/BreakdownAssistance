@@ -2,18 +2,21 @@ package com.habibur.breakdown_assistance.ui.activities;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.view.Window;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.WindowCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.shape.MaterialShapeDrawable;
 import com.habibur.breakdown_assistance.R;
 import com.habibur.breakdown_assistance.config.Prefs;
 import com.habibur.breakdown_assistance.databinding.ActivityMainBinding;
-import com.habibur.breakdown_assistance.ui.fragments.MainFragment;
 import com.habibur.breakdown_assistance.ui.fragments.LandingFragment;
+import com.habibur.breakdown_assistance.ui.fragments.MainFragment;
 import com.habibur.breakdown_assistance.utils.LocaleHelper;
 
 import java.util.Objects;
@@ -26,9 +29,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        setupEdgeToEdge();
 
         fragmentManager = getSupportFragmentManager();
 
@@ -39,6 +42,21 @@ public class MainActivity extends AppCompatActivity {
                 replaceFragment(new MainFragment());
             }
         }
+    }
+
+    private void setupEdgeToEdge() {
+        try {
+            AppBarLayout appBarLayout = findViewById(R.id.appBarLayout);
+            appBarLayout.setStatusBarForeground(
+                    MaterialShapeDrawable.createWithElevationOverlay(
+                            getApplicationContext()
+                    )
+            );
+        } catch (Exception ignored) {
+        }
+
+        Window window = getWindow();
+        WindowCompat.setDecorFitsSystemWindows(window, false);
     }
 
     public static void replaceFragment(Fragment fragment) {
