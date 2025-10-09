@@ -1,0 +1,34 @@
+package com.habibur.breakdown_assistance;
+
+import android.app.Application;
+import android.content.Context;
+
+import com.habibur.breakdown_assistance.utils.LocaleHelper;
+
+import java.lang.ref.WeakReference;
+
+public class BreakdownAssistance extends Application {
+
+    private static BreakdownAssistance instance;
+    private static WeakReference<Context> contextReference;
+
+    public void onCreate() {
+        super.onCreate();
+        instance = this;
+        contextReference = new WeakReference<>(getApplicationContext());
+    }
+
+    public static Context getAppContext() {
+        if (contextReference == null || contextReference.get() == null) {
+            contextReference = new WeakReference<>(BreakdownAssistance.getInstance().getApplicationContext());
+        }
+        return LocaleHelper.setLocale(contextReference.get());
+    }
+
+    private static BreakdownAssistance getInstance() {
+        if (instance == null) {
+            instance = new BreakdownAssistance();
+        }
+        return instance;
+    }
+}
